@@ -2,6 +2,8 @@
 #define BASEDATA_READER_H
 
 #include <iostream>
+#include <list>
+#include <fstream>
 
 using namespace std;
 
@@ -17,8 +19,9 @@ private:
     string book_genre; // жанры
 
 public:
+    list<Reader> GenName();
+    bool operator() (Reader &a, Reader &b);
     friend ostream &operator<<(ostream &os, Reader &rd);
 };
-
 
 #endif //BASEDATA_READER_H
