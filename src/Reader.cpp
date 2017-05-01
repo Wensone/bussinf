@@ -1,18 +1,7 @@
 #include "../headers/Reader.h"
 
-friend ostream &operator<<(ostream &os, Reader &rd)
-{
-    os << rd.fio << endl
-       << rd.address << endl
-       << rd.email << endl
-       << rd.book_list << endl
-       << rd.time_take << endl
-       << rd.time_using << endl
-       << rd.book_genre << endl;
-    return os;
-}
 
-list<Reader> Reader::GenName()
+list <Reader> Reader::GenName()
 {
 
     srand((unsigned int) time(NULL));
@@ -141,5 +130,22 @@ bool Reader::operator()(Reader &a, Reader &b)
 {
     //compare
     return a.fio < b.fio;
+}
+
+ostream &operator<<(ostream &os, Reader &rd)
+{
+    os << rd.fio << endl
+       << rd.address << endl
+       << rd.email << endl
+       << rd.book_list << endl
+       << rd.time_take << endl
+       << rd.time_using << endl
+       << rd.book_genre << endl;
+    return os;
+}
+
+void Reader::operator()(string filename)
+{
+
 }
 

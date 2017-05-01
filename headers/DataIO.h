@@ -11,6 +11,7 @@ protected:
     std::ofstream fout;
 public:
     DataIO() = delete;
+
     DataIO(std::string in, std::string out);
 
     virtual bool write() = 0;

@@ -19,8 +19,12 @@ private:
     string book_genre; // жанры
 
 public:
-    list<Reader> GenName();
-    bool operator() (Reader &a, Reader &b);
+    void operator()(string filename);
+
+    list <Reader> GenName();
+
+    bool operator()(Reader &a, Reader &b);
+
     friend ostream &operator<<(ostream &os, Reader &rd);
 };
 
