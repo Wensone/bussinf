@@ -3,7 +3,6 @@
 
 list <Reader> Reader::GenName()
 {
-
     srand((unsigned int) time(NULL));
 
     Reader reader;
@@ -16,8 +15,7 @@ list <Reader> Reader::GenName()
     ifstream tufin("../Genname/time_using");
     ifstream nfin("../Genname/names");
     ifstream gfin("../Genname/ganer");
-
-
+	
     //ФИО, адрес, e-mail, список взятых книг
     //времени взятия книги
     //срока пользования книгой
@@ -114,10 +112,10 @@ list <Reader> Reader::GenName()
         reader.book_genre = e[1 + rand() % 11];
 
         for (; j > 0; j--) {
-            reader.book_list += " | " + d[10 + rand() % 50];
-            reader.time_take += " | " + f[10 + rand() % 50];
-            reader.time_using += " | " + g[10 + rand() % 50];
-            reader.book_genre += " | " + e[1 + rand() % 11];
+            reader.book_list += "|" + d[10 + rand() % 50];
+            reader.time_take += "|" + f[10 + rand() % 50];
+            reader.time_using += "|" + g[10 + rand() % 50];
+            reader.book_genre += "|" + e[1 + rand() % 11];
         }
 
         lst.push_back(reader);
@@ -134,13 +132,13 @@ bool Reader::operator()(Reader &a, Reader &b)
 
 ostream &operator<<(ostream &os, Reader &rd)
 {
-    os << rd.fio << endl
-       << rd.address << endl
-       << rd.email << endl
-       << rd.book_list << endl
-       << rd.time_take << endl
-       << rd.time_using << endl
-       << rd.book_genre << endl;
+    os << rd.fio << "/"
+       << rd.address << "/"
+       << rd.email << "/"
+       << rd.book_list << "/"
+       << rd.time_take << "/"
+       << rd.time_using << "/"
+       << rd.book_genre << "/";
     return os;
 }
 

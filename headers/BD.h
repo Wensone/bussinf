@@ -46,7 +46,6 @@ void BD::sort_by_temp(T temp)
 {
 }
 
-}
 
 template<class T>
 T BD::find()

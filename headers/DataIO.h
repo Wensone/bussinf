@@ -1,7 +1,6 @@
 #ifndef BASEDATA_DATAIO_H
 #define BASEDATA_DATAIO_H
 
-
 #include <time.h>
 #include <fstream>
 

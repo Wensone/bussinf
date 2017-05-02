@@ -9,7 +9,6 @@ using namespace std;
 
 class Reader {
 private:
-
     string fio;
     string address;
     string email;
