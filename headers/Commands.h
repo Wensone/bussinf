@@ -28,13 +28,57 @@ public:
 
     void write_bd();
 
-    void del_BD();
+    void del_bd();
 
     void load_bd();
 
     void report();
 
 };
+
+void Commands::create() {
+
+}
+
+void Commands::sort() {
+
+}
+
+void Commands::add_user() {
+
+}
+
+void Commands::del_user() {
+
+}
+
+void Commands::printOne() {
+
+}
+
+void Commands::printAll() {
+
+}
+
+void Commands::write_bd() {
+
+}
+
+void Commands::del_BD() {
+
+}
+
+void Commands::load_bd() {
+
+}
+
+void Commands::report() {
+
+}
+
+void Commands::find() {
+    BD::find();
+}
 
 
 #endif //BASEDATA_COMMANDS_H

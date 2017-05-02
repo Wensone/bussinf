@@ -4,10 +4,12 @@
 #include <iostream>
 #include <list>
 #include <fstream>
+#include <iomanip>
+#include "DataIO.h"
 
 using namespace std;
 
-class Reader {
+class Reader : public DataIO {
 private:
     string fio;
     string address;
@@ -16,13 +18,17 @@ private:
     string time_take; // время взятия
     string time_using; // срок пользования
     string book_genre; // жанры
-
+	
 public:
-    void operator()(string filename);
-
-    list <Reader> GenName();
-
-    bool operator()(Reader &a, Reader &b);
+	Reader(std::string in, std::string out) : DataIO(in, out) {};
+	
+    void GenName(list<Reader> &lst);
+	
+	bool write() override;
+	
+	bool load(std::ifstream &in);
+	
+	bool operator()(Reader &a, Reader &b);
 
     friend ostream &operator<<(ostream &os, Reader &rd);
 };

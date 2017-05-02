@@ -1,13 +1,12 @@
 #include "../headers/Reader.h"
 
 
-list <Reader> Reader::GenName()
+void Reader::GenName(list<Reader> &lst)
 {
     srand((unsigned int) time(NULL));
 
-    Reader reader;
-    list <Reader> lst;
-
+    Reader reader("", "../Genname/gen_data");
+	
     ifstream afin("../Genname/address");
     ifstream bfin("../Genname/books");
     ifstream efin("../Genname/email");
@@ -21,7 +20,7 @@ list <Reader> Reader::GenName()
     //срока пользования книгой
     //предпочитаемые жанры.
 
-    ofstream fout("gen_data");
+    //ofstream fout("../Genname/gen_data");
 
     int fio;
     int adr;
@@ -120,6 +119,7 @@ list <Reader> Reader::GenName()
 
         lst.push_back(reader);
         fout << reader << endl;
+		reader.write();
         i++;
     }
 }
@@ -132,18 +132,60 @@ bool Reader::operator()(Reader &a, Reader &b)
 
 ostream &operator<<(ostream &os, Reader &rd)
 {
-    os << rd.fio << "/"
-       << rd.address << "/"
-       << rd.email << "/"
-       << rd.book_list << "/"
-       << rd.time_take << "/"
-       << rd.time_using << "/"
-       << rd.book_genre << "/";
+    os << rd.fio << 		" / "
+       << rd.address << 	" / "
+       << rd.email << 		" / "
+       << rd.book_list << 	" / "
+       << rd.time_take << 	" / "
+       << rd.time_using << 	" / "
+       << rd.book_genre;
     return os;
+	//
 }
 
-void Reader::operator()(string filename)
+void Reader::operator()(std::ifstream &in)
 {
+	string temp_str;
+	getline(in, temp_str);
+	
+	unsigned long i = temp_str.find("/");
+	this->fio = temp_str.substr(0, i-1);
+	temp_str.erase(0, i+2);
+	
+	i = temp_str.find("/");
+	this->address = temp_str.substr(0, i-1);
+	temp_str.erase(0, i+2);
+	
+	i = temp_str.find("/");
+	this->email = temp_str.substr(0, i-1);
+	temp_str.erase(0, i+2);
+	
+	i = temp_str.find("/");
+	this->book_list = temp_str.substr(0, i-1);
+	temp_str.erase(0, i+2);
+	
+	i = temp_str.find("/");
+	this->time_take = temp_str.substr(0, i-1);
+	temp_str.erase(0, i+2);
+	
+	i = temp_str.find("/");
+	this->time_using = temp_str.substr(0, i-1);
+	temp_str.erase(0, i+2);
+	
+	i = temp_str.find("/");
+	this->book_genre = temp_str.substr(0, i-1);
+	
+}
+
+bool Reader::load() {
+	//(*this)(fin);
+}
+
+bool Reader::write() {
+	//fout << *this << std::endl;
+}
+
+Reader::Reader(const Reader &o) {
 
 }
 

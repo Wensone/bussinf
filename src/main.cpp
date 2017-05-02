@@ -1,11 +1,11 @@
 #include <string>
 #include <iostream>
 #include <algorithm>
+#include "../headers/Reader.h"
+#include "../headers/Cartoteka.h"
+#include "../headers/BD.h"
 
 int main()
 {
-    std::string a;
-    a = std::to_string(123);
-    std::cout << a;
-
+	Reader a("", "");
 }
