@@ -5,7 +5,7 @@
 void Reader::GenName(list<Reader> &lst) {
 	srand((unsigned int) time(NULL));
 	
-	Reader reader("", "../Genname/gen_data");
+	Reader reader;
 	
 	ifstream afin("../Genname/address");
 	ifstream bfin("../Genname/books");
@@ -20,7 +20,7 @@ void Reader::GenName(list<Reader> &lst) {
 	//срока пользования книгой
 	//предпочитаемые жанры.
 	
-	//ofstream fout("../Genname/gen_data");
+	ofstream fout("../Genname/gen_data");
 	
 	int fio;
 	int adr;
@@ -118,7 +118,7 @@ void Reader::GenName(list<Reader> &lst) {
 		}
 		
 		lst.push_back(reader);
-		//reader.write();
+		fout << reader << endl;
 		i++;
 	}
 }
@@ -135,14 +135,7 @@ ostream &operator<<(ostream &os, Reader &rd) {
 	//
 }
 
-void Reader::write() {
-	if (!valid_write()) return;
-	
-	ofstream fout(out);
-	fout << *this << endl;
-	
-	fout.close();
-}
+
 
 bool Reader::sort(const Reader &a, const Reader &b) {
 	if (this->fio.size()) return a.fio < b.fio;
@@ -177,42 +170,37 @@ bool Reader::compare_my_class_na_easy_brat_function(Reader &b) {
 	return !c;
 }
 
-void Reader::read() {
-	if (!valid_read())
-		return;
-	
-	ifstream fin(in);
-	
-	string temp_str;
-	
-	getline(fin, temp_str);
-	
-	unsigned long i = temp_str.find("/");
-	this->fio = temp_str.substr(0, i - 1);
-	temp_str.erase(0, i + 2);
-	
-	i = temp_str.find("/");
-	this->address = temp_str.substr(0, i - 1);
-	temp_str.erase(0, i + 2);
-	
-	i = temp_str.find("/");
-	this->email = temp_str.substr(0, i - 1);
-	temp_str.erase(0, i + 2);
-	
-	i = temp_str.find("/");
-	this->book_list = temp_str.substr(0, i - 1);
-	temp_str.erase(0, i + 2);
-	
-	i = temp_str.find("/");
-	this->time_take = temp_str.substr(0, i - 1);
-	temp_str.erase(0, i + 2);
-	
-	i = temp_str.find("/");
-	this->time_using = temp_str.substr(0, i - 1);
-	temp_str.erase(0, i + 2);
-	
-	i = temp_str.find("/");
-	this->book_genre = temp_str.substr(0, i - 1);
-	
-	fin.close();
+void Reader::read(istream &fin)
+{
+    string temp_str;
+
+    getline(fin, temp_str);
+
+
+    unsigned long i = temp_str.find("/");
+    this->fio = temp_str.substr(0, i - 1);
+    temp_str.erase(0, i + 2);
+
+    i = temp_str.find("/");
+    this->address = temp_str.substr(0, i - 1);
+    temp_str.erase(0, i + 2);
+
+    i = temp_str.find("/");
+    this->email = temp_str.substr(0, i - 1);
+    temp_str.erase(0, i + 2);
+
+    i = temp_str.find("/");
+    this->book_list = temp_str.substr(0, i - 1);
+    temp_str.erase(0, i + 2);
+
+    i = temp_str.find("/");
+    this->time_take = temp_str.substr(0, i - 1);
+    temp_str.erase(0, i + 2);
+
+    i = temp_str.find("/");
+    this->time_using = temp_str.substr(0, i - 1);
+    temp_str.erase(0, i + 2);
+
+    i = temp_str.find("/");
+    this->book_genre = temp_str.substr(0, i - 1);
 }

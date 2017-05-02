@@ -3,11 +3,10 @@
 
 #include <list>
 #include <string>
-#include "DataIO.h"
 
 using namespace std;
 
-class Reader : public IOResults {
+class Reader {
 private:
 	string fio;
 	string address;
@@ -18,20 +17,19 @@ private:
 	string book_genre; // жанры
 
 public:
-	Reader(string in, string out) : IOResults(in, out) {};
-	Reader() {};
-	
+    Reader() {};
+
+    Reader(string fio, string address) : fio(fio), address(address) {};
+
 	void GenName(list <Reader> &lst);
-	
-	void write() override;
-	
-	void read() override;
-	
+
 	bool sort(const Reader &, const Reader &);
 	
 	bool compare_my_class_na_easy_brat_function(Reader &b);
 	
 	friend ostream &operator<<(ostream &os, Reader &rd);
+
+    void read(istream &in);
 };
 
 #endif //BASEDATA_READER_H

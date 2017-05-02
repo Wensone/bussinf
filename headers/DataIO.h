@@ -9,14 +9,19 @@ using namespace std;
 
 class IOResults {
 protected:
-	string in;
-	string out;
+	ifstream fin;
+	ofstream fout;
 	bool valid_in;
 	bool valid_out;
 
 public:
 	IOResults() {};
-	
+
+    ~IOResults()
+    {
+        fin.close();
+        fout.close();
+    }
 	IOResults(string in, string out);
 	
 	bool valid_read();
