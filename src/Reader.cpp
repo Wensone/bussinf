@@ -144,7 +144,40 @@ void Reader::write() {
 	fout.close();
 }
 
-void Reader::load() {
+bool Reader::sort(const Reader &a, const Reader &b) {
+	if (this->fio.size()) return a.fio < b.fio;
+	if (this->address.size()) return a.address < b.address;
+	if (this->email.size()) return a.email < b.email;
+	if (this->book_list.size()) return a.book_list < b.book_list; // список взятых книг
+	if (this->time_take.size()) return a.time_take < b.time_take; // время взятия
+	if (this->time_using.size()) return a.time_using < b.time_using; // срок пользования
+	if (this->book_genre.size()) return a.book_genre < b.book_genre; // жанры
+	
+	return false;
+}
+
+bool Reader::compare_my_class_na_easy_brat_function(Reader &b) {
+	short c = 0;
+	if (this->fio.size()) ++c;
+	if (this->address.size()) ++c;
+	if (this->email.size()) ++c;
+	if (this->book_list.size()) ++c;
+	if (this->time_take.size()) ++c;
+	if (this->time_using.size()) ++c;
+	if (this->book_genre.size()) ++c;
+	
+	if (this->fio.size() && this->fio == b.fio) --c;
+	if (this->address.size() && this->address == b.address) --c;
+	if (this->email.size() && this->email == b.email) --c;
+	if (this->book_list.size() && this->book_list == b.book_list) --c;
+	if (this->time_take.size() && this->time_take == b.time_take) --c;
+	if (this->time_using.size() && this->time_using == b.time_using) --c;
+	if (this->book_genre.size() && this->book_genre == b.book_genre) --c;
+	
+	return !c;
+}
+
+void Reader::read() {
 	if (!valid_read())
 		return;
 	
@@ -182,41 +215,4 @@ void Reader::load() {
 	this->book_genre = temp_str.substr(0, i - 1);
 	
 	fin.close();
-}
-
-bool Reader::sort(const Reader &a, const Reader &b) {
-	if (this->fio.size()) return a.fio < b.fio;
-	if (this->address.size()) return a.address < b.address;
-	if (this->email.size()) return a.email < b.email;
-	if (this->book_list.size()) return a.book_list < b.book_list; // список взятых книг
-	if (this->time_take.size()) return a.time_take < b.time_take; // время взятия
-	if (this->time_using.size()) return a.time_using < b.time_using; // срок пользования
-	if (this->book_genre.size()) return a.book_genre < b.book_genre; // жанры
-	
-	return false;
-}
-
-bool Reader::compare_my_class_na_easy_brat_function(Reader &b) {
-	short c = 0;
-	if (this->fio.size()) ++c;
-	if (this->address.size()) ++c;
-	if (this->email.size()) ++c;
-	if (this->book_list.size()) ++c;
-	if (this->time_take.size()) ++c;
-	if (this->time_using.size()) ++c;
-	if (this->book_genre.size()) ++c;
-	
-	if (this->fio.size() && this->fio == b.fio) --c;
-	if (this->address.size() && this->address == b.address) --c;
-	if (this->email.size() && this->email == b.email) --c;
-	if (this->book_list.size() && this->book_list == b.book_list) --c;
-	if (this->time_take.size() && this->time_take == b.time_take) --c;
-	if (this->time_using.size() && this->time_using == b.time_using) --c;
-	if (this->book_genre.size() && this->book_genre == b.book_genre) --c;
-	
-	return !c;
-}
-
-void Reader::read() {
-
 }

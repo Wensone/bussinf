@@ -19,14 +19,13 @@ private:
 
 public:
 	Reader(string in, string out) : IOResults(in, out) {};
+	Reader() {};
 	
 	void GenName(list <Reader> &lst);
 	
 	void write() override;
 	
 	void read() override;
-	
-	void load();
 	
 	bool sort(const Reader &, const Reader &);
 	
