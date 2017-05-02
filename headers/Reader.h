@@ -1,36 +1,38 @@
-#ifndef BASEDATA_READER_H
-#define BASEDATA_READER_H
+#ifndef READ
+#define READ
 
-#include <iostream>
 #include <list>
-#include <fstream>
-#include <iomanip>
+#include <string>
 #include "DataIO.h"
 
 using namespace std;
 
-class Reader : public DataIO {
+class Reader : public IOResults {
 private:
-    string fio;
-    string address;
-    string email;
-    string book_list; // список взятых книг
-    string time_take; // время взятия
-    string time_using; // срок пользования
-    string book_genre; // жанры
-	
-public:
-	Reader(std::string in, std::string out) : DataIO(in, out) {};
-	
-    void GenName(list<Reader> &lst);
-	
-	bool write() override;
-	
-	bool load(std::ifstream &in);
-	
-	bool operator()(Reader &a, Reader &b);
+	string fio;
+	string address;
+	string email;
+	string book_list; // список взятых книг
+	string time_take; // время взятия
+	string time_using; // срок пользования
+	string book_genre; // жанры
 
-    friend ostream &operator<<(ostream &os, Reader &rd);
+public:
+	Reader(string in, string out) : IOResults(in, out) {};
+	
+	void GenName(list <Reader> &lst);
+	
+	void write() override;
+	
+	void read() override;
+	
+	void load();
+	
+	bool sort(const Reader &, const Reader &);
+	
+	bool compare_my_class_na_easy_brat_function(Reader &b);
+	
+	friend ostream &operator<<(ostream &os, Reader &rd);
 };
 
 #endif //BASEDATA_READER_H

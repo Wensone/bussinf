@@ -3,5 +3,6 @@ project(BaseData)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(SOURCE_FILES src/main.cpp src/ headers/Commands.h src/main.cpp headers/BD.h headers/DataIO.h src/Reader.cpp headers/Reader.h src/Cartoteka.cpp headers/Cartoteka.h)
-add_executable(${PROJECT_NAME} ${SOURCE_FILES})
+set(SOURCE_FILES src/main.cpp src/Reader.cpp src/Cartoteka.cpp src/DataIO.cpp)
+set(HEADERS headers/Cartoteka.h headers/Data_Base.h headers/DataIO.h headers/Reader.h src/DataIO.cpp)
+add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${HEADERS})

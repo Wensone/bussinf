@@ -1,78 +1,36 @@
-#ifndef BASEDATA_DATAIO_H
-#define BASEDATA_DATAIO_H
+#ifndef DATA
+#define DATA
 
-#include <time.h>
+#include <iostream>
 #include <fstream>
+#include <string>
 
-class DataIO {
+using namespace std;
+
+class IOResults {
 protected:
-	std::string fin;
-	std::string fout;
-	bool in, out;
+	string in;
+	string out;
+	bool valid_in;
+	bool valid_out;
+
 public:
-	DataIO(std::string in, std::string out);
+	IOResults() {};
 	
-	bool change_in(std::string new_in);
+	IOResults(string in, string out);
 	
-	bool change_out(std::string new_out);
+	bool valid_read();
 	
-	bool fin_open();
+	bool valid_write();
 	
-	bool fout_open();
+	bool rdreopen(string file);
 	
-	virtual bool write() = 0;
+	bool wrreopen(string file);
 	
-	virtual bool load() = 0;
+	virtual void write() = 0;
 	
+	virtual void read() = 0;
 };
-
-DataIO::DataIO(std::string sin, std::string sout) {
-	this->in = this->out = false;
-	std::ifstream sfin(sin);
-	std::ofstream sfout(sout);
-	if (sfin.good()) {
-		in = true;
-		fin = sin;
-	}
-	if (sfout.good()) {
-		out = true;
-		fout = sout;
-	}
-	sfin.close();
-	sfout.close();
-}
-
-bool DataIO::change_in(std::string new_in) {
-	std::ofstream sfin(new_in);
-	bool t = false;
-	if (sfin.good()) {
-		in = true;
-		fin = new_in;
-		t = true;
-	}
-	sfin.close();
-	return t;
-}
-
-bool DataIO::change_out(std::string new_out) {
-	std::ofstream sfout(new_out);
-	bool t = false;
-	if (sfout.good()) {
-		out = true;
-		fout = new_out;
-		t = !t;
-	}
-	sfout.close();
-	return t;
-}
-
-bool DataIO::fin_open() {
-	return in;
-}
-
-bool DataIO::fout_open() {
-	return out;
-}
 
 
 #endif //BASEDATA_DATAIO_H
