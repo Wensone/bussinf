@@ -3,24 +3,31 @@
 
 #include <iostream>
 #include <string>
+#include "Cartoteka.h"
 
 using namespace std;
 
-template <class A, class B>
 class BDcommunity {
 private:
-    A card;
-    B reader;
+    Reader card;
+    Cartoteka reader;
 	int base;
-	enum Type_base {A, B};
+	enum Type_base {reader, card};
 public:
-	BDcommunity() = delete;
-	BDcommunity(A card, B read);
-	
-	void change_base(); // выбираем базу для работы
-	void create(int type); // создание базы (описание внутри)
+	void change_base()
+    {
+
+    }
+    // выбираем базу для работы
+
+    void create(int type)
+    {
+
+    }
+    // создание базы (описание внутри)
 	//bool
 	
 };
+
 
 #endif //BASEDATA_BDCOMMUNITY_H
