@@ -27,12 +27,6 @@ public:
 
     bool operator<(const Cartoteka &rhs) const;
 
-    bool operator>(const Cartoteka &rhs) const;
-
-    bool operator<=(const Cartoteka &rhs) const;
-
-    bool operator>=(const Cartoteka &rhs) const;
-
     friend ostream &operator<<(ostream &os, const Cartoteka &o);
 
     void setAuthor(const string &author);

@@ -16,8 +16,7 @@ namespace DB {
         list <T> l;
     public:
         DataBase(string in, string out) : IOResults(in, out)
-        {
-        };
+        {};
 
         void generate()
         {

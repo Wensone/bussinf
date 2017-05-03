@@ -227,18 +227,3 @@ bool Cartoteka::operator<(const Cartoteka &rhs) const
         return avail < rhs.avail;
     return valuation < rhs.valuation;
 }
-
-bool Cartoteka::operator>(const Cartoteka &rhs) const
-{
-    return rhs < *this;
-}
-
-bool Cartoteka::operator<=(const Cartoteka &rhs) const
-{
-    return !(rhs < *this);
-}
-
-bool Cartoteka::operator>=(const Cartoteka &rhs) const
-{
-    return !(*this < rhs);
-}
