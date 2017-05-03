@@ -21,7 +21,7 @@ int main()
     // lol.print_all();
     */
     
-    BDcommunity<Cartoteka, Reader> bdc(card, read);
+//    BDcommunity<Cartoteka, Reader> bdc(card, read);
 	
     
 }

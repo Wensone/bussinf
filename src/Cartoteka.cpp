@@ -1,10 +1,11 @@
 #include "../headers/Cartoteka.h"
 
-list <Cartoteka> Cartoteka::GenCard(){
+int Cartoteka::pole = 1;
+
+void Cartoteka::GenCard(list<Cartoteka> &lst){
 	srand( (unsigned)time(NULL) );
 	Cartoteka card;
-	list<Cartoteka> lst;
-	
+
 	string author;
 	string name;
 	string publ;
@@ -119,14 +120,7 @@ list <Cartoteka> Cartoteka::GenCard(){
 		fout << card << endl;
 		i++;
 	}
-	
-	return lst;
-}
 
-bool Cartoteka::operator () (Cartoteka &a, Cartoteka &b) {
-	// compare function
-	
-	return a.author < b.author;
 }
 
 ostream & operator << (ostream &os, const Cartoteka &o){
@@ -140,6 +134,78 @@ ostream & operator << (ostream &os, const Cartoteka &o){
 	return os;
 }
 
-void Cartoteka::operator () (string filename) {
+void Cartoteka::read(ifstream &in) {
 
+}
+
+bool Cartoteka::compare_my_class_na_easy_brat_function(Cartoteka &b)
+{
+    short c = 0;
+    if (this->author.size()) ++c;
+    if (this->avail.size()) ++c;
+    if (this->name.size()) ++c;
+    if (this->valuation.size()) ++c;
+    if (this->year.size()) ++c;
+    if (this->publishing.size()) ++c;
+    if (this->section.size()) ++c;
+
+    if (this->author.size() && this->author == b.author) --c;
+    if (this->avail.size() && this->avail == b.avail) --c;
+    if (this->name.size() && this->name == b.name) --c;
+    if (this->valuation.size() && this->valuation == b.valuation) --c;
+    if (this->year.size() && this->year == b.year) --c;
+    if (this->year.size() && this->year == b.year) --c;
+    if (this->section.size() && this->section == b.section) --c;
+
+    return !c;
+}
+
+void Cartoteka::setAuthor(const string &author)
+{
+    Cartoteka::author = author;
+}
+
+void Cartoteka::setName(const string &name)
+{
+    Cartoteka::name = name;
+}
+
+void Cartoteka::setPublishing(const string &publishing)
+{
+    Cartoteka::publishing = publishing;
+}
+
+void Cartoteka::setYear(const string &year)
+{
+    Cartoteka::year = year;
+}
+
+void Cartoteka::setSection(const string &section)
+{
+    Cartoteka::section = section;
+}
+
+void Cartoteka::setAvail(const string &avail)
+{
+    Cartoteka::avail = avail;
+}
+
+void Cartoteka::setValuation(const string &valuation)
+{
+    Cartoteka::valuation = valuation;
+}
+
+Cartoteka::Cartoteka()
+{
+    author = avail = name = year = valuation = publishing = section = "";
+}
+
+int Cartoteka::getPole()
+{
+    return pole;
+}
+
+void Cartoteka::setPole(int pole)
+{
+    Cartoteka::pole = pole;
 }
