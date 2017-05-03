@@ -22,7 +22,7 @@ public:
 
     static int getNumber();
 
-    static void setNumber(int number);
+    static bool setNumber(int number);
 
     void setFio(const string &fio);
 

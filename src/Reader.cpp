@@ -214,11 +214,12 @@ int Reader::getNumber()
     return number;
 }
 
-void Reader::setNumber(int number)
+bool Reader::setNumber(int number)
 {
     if (number < 0 || number > 7)
-        return;
+        return false;
     Reader::number = number;
+    return true;
 }
 
 void Reader::setFio(const string &fio)

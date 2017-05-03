@@ -86,9 +86,117 @@ public:
             }
         }
     }
+
+    void switch_input()
+    {
+        cout << "Enter new input filename" << endl;
+        string newfilename;
+        cin >> newfilename;
+        if (base == 1) {
+            reader->rdreopen(newfilename);
+        } else {
+            card->rdreopen(newfilename);
+        }
+    }
+
+    void switch_output()
+    {
+        cout << "Enter new output filename" << endl;
+        string newfilename;
+        cin >> newfilename;
+        if (base == 1) {
+            reader->wrreopen(newfilename);
+        } else {
+            card->wrreopen(newfilename);
+        }
+    }
+
+    void add_new_record()
+    {
+        string new_pole;
+        if (base == 1) {
+            Reader NewReader;
+            cout << "FIO : ";
+            cin >> new_pole;
+            NewReader.setFio(new_pole);
+            cout << "Address : ";
+            cin >> new_pole;
+            NewReader.setAddress(new_pole);
+            cout << "Email : ";
+            cin >> new_pole;
+            NewReader.setEmail(new_pole);
+            cout << "Book list : ";
+            cin >> new_pole;
+            NewReader.setBook_list(new_pole);
+            cout << "Book genre : ";
+            cin >> new_pole;
+            NewReader.setBook_genre(new_pole);
+            cout << "Time taking : ";
+            cin >> new_pole;
+            NewReader.setTime_take(new_pole);
+            cout << "Time using : ";
+            cin >> new_pole;
+            NewReader.setTime_using(new_pole);
+            reader->add_rec(NewReader);
+        } else {
+            Cartoteka NewRecord;
+            cout << "Author : ";
+            cin >> new_pole;
+            NewRecord.setAuthor(new_pole);
+            cout << "Name : ";
+            cin >> new_pole;
+            NewRecord.setName(new_pole);
+            cout << "Avail : ";
+            cin >> new_pole;
+            NewRecord.setAvail(new_pole);
+            cout << "Publishing : ";
+            cin >> new_pole;
+            NewRecord.setPublishing(new_pole);
+            cout << "Setciton : ";
+            cin >> new_pole;
+            NewRecord.setSection(new_pole);
+            cout << "Valution : ";
+            cin >> new_pole;
+            NewRecord.setValuation(new_pole);
+            cout << "Year : ";
+            cin >> new_pole;
+            NewRecord.setYear(new_pole);
+            card->add_rec(NewRecord);
+        }
+    }
+
+    void sort()
+    {
+        cout << "What are you want sort?" << endl;
+        if (base == 1) {
+            // list number of pole
+            int n;
+            cin >> n;
+            while (!Reader::setNumber(n)) {
+                cout << "Incorrect value" << endl;
+            }
+            reader->sorting();
+        } else {
+            // list number of pole
+            int n;
+            cin >> n;
+            while(!Cartoteka::setPole(n)) {
+                cout << "Incorrect value" << endl;
+                card->sorting();
+            }
+        }
+    }
+
+    //find
+    //delete
+    //write
+    //load
+    //printOne
+
+
     void menu()
     {
-        cout <<
+//        cout <<
     }
 
 };

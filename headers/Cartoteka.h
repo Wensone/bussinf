@@ -47,7 +47,7 @@ public:
 
     static int getPole();
 
-    static void setPole(int pole);
+    static bool setPole(int pole);
 
 };
 

@@ -205,10 +205,12 @@ int Cartoteka::getPole()
     return pole;
 }
 
-void Cartoteka::setPole(int pole)
+bool Cartoteka::setPole(int pole)
 {
     if (pole < 0 || pole > 7)
+        return false;
     Cartoteka::pole = pole;
+    return true;
 }
 
 bool Cartoteka::operator<(const Cartoteka &rhs) const
