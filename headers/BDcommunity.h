@@ -12,7 +12,7 @@ private:
     Reader card;
     Cartoteka reader;
 	int base;
-	enum Type_base {reader, card};
+	enum Type_base {r, c};
 public:
 	void change_base()
     {

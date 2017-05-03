@@ -21,9 +21,17 @@ private:
 public:
     void read(ifstream &in);
 
-    void GenCard(list <Cartoteka> &lst);
+    void Generate(list <Cartoteka> &lst);
 
     bool compare_my_class_na_easy_brat_function(Cartoteka &b);
+
+    bool operator<(const Cartoteka &rhs) const;
+
+    bool operator>(const Cartoteka &rhs) const;
+
+    bool operator<=(const Cartoteka &rhs) const;
+
+    bool operator>=(const Cartoteka &rhs) const;
 
     friend ostream &operator<<(ostream &os, const Cartoteka &o);
 

@@ -38,7 +38,7 @@ public:
 
     void setBook_genre(const string &book_genre);
 
-    void GenName(list <Reader> &lst);
+    void Generate(list <Reader> &lst);
 
 	bool operator<(const Reader &);
 	

@@ -22,6 +22,10 @@ int main()
     */
     
 //    BDcommunity<Cartoteka, Reader> bdc(card, read);
-	
+    DB::DataBase<Cartoteka> lol("../Gencard/gen_data", "../Gencard/gen_card");
+    lol.generate();
+    lol.sorting();
+    lol.print_all();
+
     
 }

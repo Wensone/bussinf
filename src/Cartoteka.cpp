@@ -2,7 +2,7 @@
 
 int Cartoteka::pole = 1;
 
-void Cartoteka::GenCard(list<Cartoteka> &lst){
+void Cartoteka::Generate(list <Cartoteka> &lst){
 	srand( (unsigned)time(NULL) );
 	Cartoteka card;
 
@@ -207,5 +207,38 @@ int Cartoteka::getPole()
 
 void Cartoteka::setPole(int pole)
 {
+    if (pole < 0 || pole > 7)
     Cartoteka::pole = pole;
+}
+
+bool Cartoteka::operator<(const Cartoteka &rhs) const
+{
+    if (pole == 1)
+        return author < rhs.author;
+    if (pole == 2)
+        return name < rhs.name;
+    if (pole == 3)
+        return publishing < rhs.publishing;
+    if (pole == 4)
+        return year < rhs.year;
+    if (pole == 5)
+        return section < rhs.section;
+    if (pole == 6)
+        return avail < rhs.avail;
+    return valuation < rhs.valuation;
+}
+
+bool Cartoteka::operator>(const Cartoteka &rhs) const
+{
+    return rhs < *this;
+}
+
+bool Cartoteka::operator<=(const Cartoteka &rhs) const
+{
+    return !(rhs < *this);
+}
+
+bool Cartoteka::operator>=(const Cartoteka &rhs) const
+{
+    return !(*this < rhs);
 }

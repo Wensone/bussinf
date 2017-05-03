@@ -4,7 +4,7 @@
 
 int Reader::number = 3;
 
-void Reader::GenName(list <Reader> &lst)
+void Reader::Generate(list <Reader> &lst)
 {
     srand((unsigned int) time(NULL));
 

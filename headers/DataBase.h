@@ -19,6 +19,11 @@ namespace DB {
         {
         };
 
+        void generate()
+        {
+            T t;
+            t.Generate(l);
+        }
 
         void write()
         {
