@@ -15,21 +15,39 @@ private:
 	string time_take; // время взятия
 	string time_using; // срок пользования
 	string book_genre; // жанры
+    static int number;
 
 public:
-    Reader() {};
+    Reader();
 
-    Reader(string fio, string address) : fio(fio), address(address) {};
+    static int getNumber();
 
-	void GenName(list <Reader> &lst);
+    static void setNumber(int number);
 
-	bool sort(const Reader &, const Reader &);
+    void setFio(const string &fio);
+
+    void setAddress(const string &address);
+
+    void setEmail(const string &email);
+
+    void setBook_list(const string &book_list);
+
+    void setTime_take(const string &time_take);
+
+    void setTime_using(const string &time_using);
+
+    void setBook_genre(const string &book_genre);
+
+    void GenName(list <Reader> &lst);
+
+	bool operator<(const Reader &);
 	
 	bool compare_my_class_na_easy_brat_function(Reader &b);
 	
 	friend ostream &operator<<(ostream &os, Reader &rd);
 
     void read(istream &in);
+
 };
 
 #endif //BASEDATA_READER_H

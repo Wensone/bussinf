@@ -3,12 +3,16 @@
 
 int main()
 {
+
 	DB::DataBase<Reader> lol("../Genname/gen_data", "lol");
     lol.load();
-	lol.print_all();
+	//lol.print_all();
     lol.write();
     ifstream a("lol");
-    Reader l("Емельянов Арсений Семёнович", "aa");
-    lol.sorting(l);
-
+    lol.sorting();
+    Reader find;
+    find.setFio("Брагин Виктор Пётрович");
+    Reader kek = lol.find(find);
+    cout << kek << endl;
+//    lol.print_all();
 }

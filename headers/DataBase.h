@@ -5,20 +5,23 @@
 #include <iostream>
 #include <algorithm>
 #include "DataIO.h"
+#include "Reader.h"
 
 using namespace std;
 
-namespace DB  {
+namespace DB {
     template<class T>
     class DataBase : public IOResults {
     private:
         list <T> l;
-
     public:
-        DataBase(string in, string out) : IOResults(in, out) {};
+        DataBase(string in, string out) : IOResults(in, out)
+        {
+        };
 
 
-        void write() {
+        void write()
+        {
             if (!valid_write()) return;
 
             for (auto p : l) {
@@ -27,8 +30,9 @@ namespace DB  {
 
         }
 
-        void read() {
-           if (!valid_read()) return;
+        void read()
+        {
+            if (!valid_read()) return;
             T t;
             t.read(fin);
         }
@@ -63,11 +67,16 @@ namespace DB  {
 
         }
 
-        void sorting(T &temp)
+        void sorting()
         {
-            sort(l.begin(), l.end(), temp.sort);
+            l.sort();
         }
 
+        int switchCase(int n)
+        {
+            T::setNumber(n);
+            return 0;
+        }
 
         bool del_rec(T &temp)
         {
