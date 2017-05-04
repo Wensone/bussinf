@@ -12,7 +12,6 @@
 #endif
 
 
-
 class BDcommunity {
 private:
     DB::DataBase<Reader> *reader;
@@ -76,6 +75,7 @@ public:
 
     void del_base();
 
+    void clear_screen();
 
     void menu();
 

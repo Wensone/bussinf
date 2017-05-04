@@ -2,7 +2,7 @@
 
 void BDcommunity::print_Cartoteka()
 {
-    cout << "1. Author"  << endl
+    cout << "1. Author" << endl
          << "2. Name " << endl
          << "3. publishing" << endl
          << "4. Year" << endl
@@ -13,12 +13,12 @@ void BDcommunity::print_Cartoteka()
 
 void BDcommunity::print_Reader()
 {
-    cout << "1. FIO"  << endl
+    cout << "1. FIO" << endl
          << "2. Address " << endl
          << "3. E-mail" << endl
          << "4. Book list" << endl
          << "5. Time take" << endl
-         << "6. Time using"<< endl
+         << "6. Time using" << endl
          << "7. Book genre" << endl;
 }
 
@@ -111,7 +111,7 @@ void BDcommunity::menu()
         cout << "Now base is " << ((base == 1) ? "Reader" : "Cartoteka") << endl;
         bool in, out;
         this->checkIO(in, out);
-        cout << "Input : " << ((in) ? "YES " : " NO ") << "| Output : "  << ((out) ? "YES" : "NO") << endl;
+        cout << "Input : " << ((in) ? "YES " : " NO ") << "| Output : " << ((out) ? "YES" : "NO") << endl;
         cout << "1. Switch base" << endl
              << "2. Generate" << endl
              << "3. Print all base" << endl
@@ -122,7 +122,8 @@ void BDcommunity::menu()
              << "8. Switch output file" << endl
              << "9. Sort" << endl
              << "10 Add record in base" << endl
-             << "11. Delete record" << endl;
+             << "11. Delete record" << endl
+             << "12. Clear scree" << endl;
 
         int key;
         cout << "Enter menu point: ";
@@ -130,7 +131,6 @@ void BDcommunity::menu()
         switch (key) {
             case 1: {
                 this->change_base();
-
                 break;
             }
             case 2: {
@@ -174,20 +174,20 @@ void BDcommunity::menu()
             case 9 : {
                 system("clear");
                 cout << "What is the pole:";
-                if(base == 1){
+                if (base == 1) {
                     print_Reader();
                 } else {
                     print_Cartoteka();
                 }
                 int n;
-                do{
+                do {
                     cin >> n;
-                }while(n < 1 || n > 7);
-                this -> sort(n);
+                } while (n < 1 || n > 7);
+                this->sort(n);
                 break;
             }
             case 10 : {
-                if(base == 1){
+                if (base == 1) {
                     this->add_new_record(enter_Reader());
                 } else {
                     this->add_new_record(enter_Cartoteka());
@@ -195,13 +195,17 @@ void BDcommunity::menu()
                 break;
             }
             case 11 : {
-                if(base == 1){
+                if (base == 1) {
                     Reader rd = enter_Reader();
                     this->del_record(rd);
                 } else {
                     Cartoteka cd = enter_Cartoteka();
                     this->del_record(cd);
                 }
+                break;
+            }
+            case 12 : {
+                this->clear_screen();
                 break;
             }
             default:
@@ -364,4 +368,9 @@ int BDcommunity::load()
 bool BDcommunity::del_record(Cartoteka &t)
 {
     return card->del_rec(t);
+}
+
+void BDcommunity::clear_screen()
+{
+    system(clr);
 }

@@ -1,27 +1,31 @@
 #include "../headers/DataIO.h"
 
-IOResults::IOResults(string in, string out) {
-	valid_in = valid_out = false;
-	fin.open(in);
-	fout.open(out);
+IOResults::IOResults(string in, string out)
+{
+    valid_in = valid_out = false;
+    fin.open(in);
+    fout.open(out);
 
-	if (fin.good()) {
-		valid_in = true;
-	}
-	if (fout.good()) {
-		valid_out = true;
-	}
+    if (fin.good()) {
+        valid_in = true;
+    }
+    if (fout.good()) {
+        valid_out = true;
+    }
 }
 
-bool IOResults::valid_read() {
-	return valid_in;
+bool IOResults::valid_read()
+{
+    return valid_in;
 }
 
-bool IOResults::valid_write() {
-	return valid_out;
+bool IOResults::valid_write()
+{
+    return valid_out;
 }
 
-bool IOResults::rdreopen(string file) {
+bool IOResults::rdreopen(string file)
+{
     fin.close();
     fin.open(file);
     valid_in = fin.good();

@@ -9,32 +9,35 @@ using namespace std;
 
 class IOResults {
 protected:
-	ifstream fin;
-	ofstream fout;
-	bool valid_in;
-	bool valid_out;
+    ifstream fin;
+    ofstream fout;
+    bool valid_in;
+    bool valid_out;
 
 public:
-	IOResults() {};
+    IOResults()
+    {
+    };
 
     ~IOResults()
     {
         fin.close();
         fout.close();
     }
-	IOResults(string in, string out);
-	
-	bool valid_read();
-	
-	bool valid_write();
-	
-	bool rdreopen(string file);
-	
-	bool wrreopen(string file);
-	
-	virtual void write() = 0;
-	
-	virtual void read() = 0;
+
+    IOResults(string in, string out);
+
+    bool valid_read();
+
+    bool valid_write();
+
+    bool rdreopen(string file);
+
+    bool wrreopen(string file);
+
+    virtual void write() = 0;
+
+    virtual void read() = 0;
 };
 
 
