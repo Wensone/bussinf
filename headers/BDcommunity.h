@@ -186,6 +186,18 @@ public:
             }
         }
     }
+	
+	void find(){
+		cout << "Enter search key" << endl;
+		string search_key;
+		cin.ignore();
+		getline(cin, search_key);
+		if(base == 1){
+			Reader search;
+			search;
+			//reader->find(search_key);
+		}
+	}
 
     //find
     //delete
@@ -194,9 +206,46 @@ public:
     //printOne
 
 
-    void menu()
+    int menu()
     {
-//        cout <<
+		cout << "\t\t Menu \t\t\n";
+		
+		do{
+			cout << "1. " << endl
+					<< "2. " << endl
+					<< "3. " << endl
+					<< "4. " << endl
+					<< "5. " << endl
+					<< "6. " << endl
+					<< "7. " << endl;
+			int key;
+			cout << "Enter menu point: ";
+			cin >> key;
+			switch (key){
+				case 1: {
+					break;
+				}
+				case 2: {
+					break;
+				}
+				case 3: {
+					break;
+				}
+				case 4: {
+					break;
+				}
+				case 5: {
+					break;
+				}
+				case 6: {
+					break;
+				}
+				case 7: {
+					break;
+				}
+				default: return 0;
+			}
+		}while(true);
     }
 
 };
