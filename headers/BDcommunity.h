@@ -29,6 +29,14 @@ public:
         delete reader;
     }
 
+    void print_Cartoteka();
+
+    void print_Reader();
+
+    Reader enter_Reader();
+
+    Cartoteka enter_Cartoteka();
+
     int getBaseNow()
     {
         return base;
@@ -248,14 +256,18 @@ public:
                  << "5. Write" << endl
                  << "6. Delete base" << endl
                  << "7. Switch input file" << endl
-                 << "8. Switch output file" << endl;
+                 << "8. Switch output file" << endl
+                 << "9. Sort" << endl
+                 << "10 Add record in base" << endl
+                 << "11. Delete record" << endl;
+
             int key;
             cout << "Enter menu point: ";
             cin >> key;
             switch (key) {
                 case 1: {
                     this->change_base();
-                    
+
                     break;
                 }
                 case 2: {
@@ -296,6 +308,39 @@ public:
                     this->switch_output(file);
                     break;
                 }
+                case 9 : {
+                    system("clear");
+                    cout << "What is the pole:";
+                    if(base == 1){
+                        print_Reader();
+                    } else {
+                        print_Cartoteka();
+                    }
+                    int n;
+                    do{
+                        cin >> n;
+                    }while(n < 1 || n > 7);
+                    this -> sort(n);
+                    break;
+                }
+                case 10 : {
+                    if(base == 1){
+                        this->add_new_record(enter_Reader());
+                    } else {
+                        this->add_new_record(enter_Cartoteka());
+                    }
+                    break;
+                }
+                case 11 : {
+                    if(base == 1){
+                        Reader rd = enter_Reader();
+                        this->del_record(rd);
+                    } else {
+                        Cartoteka cd = enter_Cartoteka();
+                        this->del_record(cd);
+                    }
+                    break;
+                }
                 default:
                     return;
             }
@@ -303,6 +348,99 @@ public:
     }
 
 };
+
+void BDcommunity::print_Cartoteka()
+{
+    cout << "1. Author"  << endl
+         << "2. Name " << endl
+         << "3. Publishing" << endl
+         << "4. Year" << endl
+         << "5. Section" << endl
+         << "6. Avail" << endl
+         << "7. Valuation" << endl;
+}
+
+void BDcommunity::print_Reader()
+{
+    cout << "1. FIO"  << endl
+         << "2. Address " << endl
+         << "3. E-mail" << endl
+         << "4. Book list" << endl
+         << "5. Time take" << endl
+         << "6. Time using"<< endl
+         << "7. Book genre" << endl;
+}
+
+Reader BDcommunity::enter_Reader()
+{
+    string new_pole;
+    Reader NewReader;
+    {
+
+        cout << "FIO : ";
+        cin.ignore();
+        getline(cin, new_pole);
+        NewReader.setFio(new_pole);
+        cout << "Address : ";
+        cin.ignore();
+        getline(cin, new_pole);
+        NewReader.setAddress(new_pole);
+        cout << "Email : ";
+        cin.ignore();
+        getline(cin, new_pole);
+        NewReader.setEmail(new_pole);
+        cout << "Book list : ";
+        cin.ignore();
+        getline(cin, new_pole);
+        NewReader.setBook_list(new_pole);
+        cout << "Book genre : ";
+        cin.ignore();
+        getline(cin, new_pole);
+        NewReader.setBook_genre(new_pole);
+        cout << "Time taking : ";
+        cin.ignore();
+        getline(cin, new_pole);
+        NewReader.setTime_take(new_pole);
+        cout << "Time using : ";
+        cin.ignore();
+        getline(cin, new_pole);
+        NewReader.setTime_using(new_pole);
+        //reader->add_rec(NewReader);
+    }
+    return NewReader;
+}
+
+Cartoteka BDcommunity::enter_Cartoteka()
+{
+    string new_pole;
+    Cartoteka NewRecord;
+    {
+
+        cout << "Author : ";
+        cin >> new_pole;
+        NewRecord.setAuthor(new_pole);
+        cout << "Name : ";
+        cin >> new_pole;
+        NewRecord.setName(new_pole);
+        cout << "Avail : ";
+        cin >> new_pole;
+        NewRecord.setAvail(new_pole);
+        cout << "Publishing : ";
+        cin >> new_pole;
+        NewRecord.setPublishing(new_pole);
+        cout << "Setciton : ";
+        cin >> new_pole;
+        NewRecord.setSection(new_pole);
+        cout << "Valution : ";
+        cin >> new_pole;
+        NewRecord.setValuation(new_pole);
+        cout << "Year : ";
+        cin >> new_pole;
+        NewRecord.setYear(new_pole);
+        //card->add_rec(NewRecord);
+    }
+    return NewRecord;
+}
 
 
 #endif //BASEDATA_BDCOMMUNITY_H
