@@ -157,7 +157,7 @@ bool Cartoteka::compare_my_class_na_easy_brat_function(Cartoteka &b)
     if (this->year.size() > 1 && this->year == b.year) --c;
     if (this->section.size() > 1 && this->section == b.section) --c;
 
-    return !c;
+    return (c == 0);
 }
 
 void Cartoteka::setAuthor(const string &author)
