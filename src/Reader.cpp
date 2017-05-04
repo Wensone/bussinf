@@ -155,23 +155,23 @@ bool Reader::operator<(const Reader &b)
 bool Reader::compare_my_class_na_easy_brat_function(Reader &b)
 {
     short c = 0;
-    if (this->fio.size()) ++c;
-    if (this->address.size()) ++c;
-    if (this->email.size()) ++c;
-    if (this->book_list.size()) ++c;
-    if (this->time_take.size()) ++c;
-    if (this->time_using.size()) ++c;
-    if (this->book_genre.size()) ++c;
+    if (this->fio.size() > 1) ++c;
+    if (this->address.size() > 1) ++c;
+    if (this->email.size() > 1) ++c;
+    if (this->book_list.size() > 1) ++c;
+    if (this->time_take.size() > 1) ++c;
+    if (this->time_using.size() > 1) ++c;
+    if (this->book_genre.size() > 1) ++c;
 
-    if (this->fio.size() && this->fio == b.fio) --c;
-    if (this->address.size() && this->address == b.address) --c;
-    if (this->email.size() && this->email == b.email) --c;
-    if (this->book_list.size() && this->book_list == b.book_list) --c;
-    if (this->time_take.size() && this->time_take == b.time_take) --c;
-    if (this->time_using.size() && this->time_using == b.time_using) --c;
-    if (this->book_genre.size() && this->book_genre == b.book_genre) --c;
+    if (this->fio.size() > 1 && this->fio == b.fio) --c;
+    if (this->address.size() > 1 && this->address == b.address) --c;
+    if (this->email.size() > 1 && this->email == b.email) --c;
+    if (this->book_list.size() > 1 && this->book_list == b.book_list) --c;
+    if (this->time_take.size() > 1 && this->time_take == b.time_take) --c;
+    if (this->time_using.size() > 1 && this->time_using == b.time_using) --c;
+    if (this->book_genre.size() > 1 && this->book_genre == b.book_genre) --c;
 
-    return !c;
+    return (c == 0);
 }
 
 void Reader::read(istream &fin)

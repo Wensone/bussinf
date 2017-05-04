@@ -382,29 +382,27 @@ Reader BDcommunity::enter_Reader()
         getline(cin, new_pole);
         NewReader.setFio(new_pole);
         cout << "Address : ";
-        cin.ignore();
+
         getline(cin, new_pole);
         NewReader.setAddress(new_pole);
         cout << "Email : ";
-        cin.ignore();
         getline(cin, new_pole);
         NewReader.setEmail(new_pole);
         cout << "Book list : ";
-        cin.ignore();
+
         getline(cin, new_pole);
         NewReader.setBook_list(new_pole);
         cout << "Book genre : ";
-        cin.ignore();
+
         getline(cin, new_pole);
         NewReader.setBook_genre(new_pole);
         cout << "Time taking : ";
-        cin.ignore();
         getline(cin, new_pole);
         NewReader.setTime_take(new_pole);
         cout << "Time using : ";
-        cin.ignore();
         getline(cin, new_pole);
         NewReader.setTime_using(new_pole);
+        cin.clear();
         //reader->add_rec(NewReader);
     }
     return NewReader;
@@ -417,26 +415,28 @@ Cartoteka BDcommunity::enter_Cartoteka()
     {
 
         cout << "Author : ";
-        cin >> new_pole;
+        cin.ignore();
+        getline(cin, new_pole);
         NewRecord.setAuthor(new_pole);
         cout << "Name : ";
-        cin >> new_pole;
+        getline(cin, new_pole);
         NewRecord.setName(new_pole);
         cout << "Avail : ";
-        cin >> new_pole;
+        getline(cin, new_pole);
         NewRecord.setAvail(new_pole);
         cout << "Publishing : ";
-        cin >> new_pole;
+        getline(cin, new_pole);
         NewRecord.setPublishing(new_pole);
         cout << "Setciton : ";
-        cin >> new_pole;
+        getline(cin, new_pole);
         NewRecord.setSection(new_pole);
         cout << "Valution : ";
-        cin >> new_pole;
+        getline(cin, new_pole);
         NewRecord.setValuation(new_pole);
         cout << "Year : ";
-        cin >> new_pole;
+        getline(cin, new_pole);
         NewRecord.setYear(new_pole);
+        cin.clear();
         //card->add_rec(NewRecord);
     }
     return NewRecord;

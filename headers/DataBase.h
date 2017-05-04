@@ -48,7 +48,6 @@ namespace DB {
 
         bool find(T &templ)
         {
-            T t;
             for (auto p : l) {
                 if (templ.compare_my_class_na_easy_brat_function(p)) {
                     templ = p;

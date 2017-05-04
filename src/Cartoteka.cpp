@@ -141,21 +141,21 @@ void Cartoteka::read(ifstream &in) {
 bool Cartoteka::compare_my_class_na_easy_brat_function(Cartoteka &b)
 {
     short c = 0;
-    if (this->author.size()) ++c;
-    if (this->avail.size()) ++c;
-    if (this->name.size()) ++c;
-    if (this->valuation.size()) ++c;
-    if (this->year.size()) ++c;
-    if (this->publishing.size()) ++c;
-    if (this->section.size()) ++c;
+    if (this->author.size() > 1) ++c;
+    if (this->avail.size() > 1) ++c;
+    if (this->name.size() > 1) ++c;
+    if (this->valuation.size() > 1) ++c;
+    if (this->year.size() > 1) ++c;
+    if (this->publishing.size() > 1) ++c;
+    if (this->section.size() > 1) ++c;
 
-    if (this->author.size() && this->author == b.author) --c;
-    if (this->avail.size() && this->avail == b.avail) --c;
-    if (this->name.size() && this->name == b.name) --c;
-    if (this->valuation.size() && this->valuation == b.valuation) --c;
-    if (this->year.size() && this->year == b.year) --c;
-    if (this->year.size() && this->year == b.year) --c;
-    if (this->section.size() && this->section == b.section) --c;
+    if (this->author.size() > 1 && this->author == b.author) --c;
+    if (this->avail.size() > 1 && this->avail == b.avail) --c;
+    if (this->name.size() > 1 && this->name == b.name) --c;
+    if (this->valuation.size() > 1 && this->valuation == b.valuation) --c;
+    if (this->year.size() > 1 && this->year == b.year) --c;
+    if (this->year.size() > 1 && this->year == b.year) --c;
+    if (this->section.size() > 1 && this->section == b.section) --c;
 
     return !c;
 }
