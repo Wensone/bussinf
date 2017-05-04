@@ -10,6 +10,7 @@ IOResults::IOResults(string in, string out)
         valid_in = true;
     }
     if (fout.good()) {
+        outputFile = out;
         valid_out = true;
     }
 }
@@ -37,6 +38,7 @@ bool IOResults::wrreopen(string file)
     fout.close();
     fout.open(file);
     valid_out = fout.good();
+    outputFile = file;
     return valid_out;
 }
 

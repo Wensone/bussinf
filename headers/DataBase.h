@@ -107,6 +107,8 @@ namespace DB {
         void clean_your_ass()
         {
             l.clear();
+            fout.close();
+            fout.open(outputFile, ios_base::trunc | ios_base::out);
         }
 
         void load()

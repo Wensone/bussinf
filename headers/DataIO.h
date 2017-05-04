@@ -11,6 +11,8 @@ class IOResults {
 protected:
     ifstream fin;
     ofstream fout;
+    string outputFile;
+
     bool valid_in;
     bool valid_out;
 

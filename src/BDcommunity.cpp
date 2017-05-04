@@ -197,7 +197,9 @@ void BDcommunity::menu()
             case 11 : {
                 if (base == 1) {
                     Reader rd = enter_Reader();
-                    this->del_record(rd);
+                    if (this->del_record(rd)) {
+                        cout << "Deleted success" << endl;
+                    }
                 } else {
                     Cartoteka cd = enter_Cartoteka();
                     this->del_record(cd);
@@ -324,6 +326,7 @@ void BDcommunity::del_base()
 {
     if (base == 1) {
         reader->clean_your_ass();
+
     } else {
         card->clean_your_ass();
     }
