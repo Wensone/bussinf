@@ -255,6 +255,7 @@ public:
             switch (key) {
                 case 1: {
                     this->change_base();
+                    
                     break;
                 }
                 case 2: {
