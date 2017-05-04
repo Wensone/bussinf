@@ -262,3 +262,19 @@ Reader::Reader()
     address = fio = email = time_take = time_using = book_genre = book_list = "";
 }
 
+bool Reader::operator==(const Reader &rhs) const
+{
+    return fio == rhs.fio &&
+           address == rhs.address &&
+           email == rhs.email &&
+           book_list == rhs.book_list &&
+           time_take == rhs.time_take &&
+           time_using == rhs.time_using &&
+           book_genre == rhs.book_genre;
+}
+
+bool Reader::operator!=(const Reader &rhs) const
+{
+    return !(rhs == *this);
+}
+

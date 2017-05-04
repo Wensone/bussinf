@@ -41,26 +41,31 @@ namespace DB {
             t.read(fin);
         }
 
-        void print_one(const T &t)
+        bool print_one(const T &t)
         {
-            T a = find(t);
-            if (a) {
-                cout << t << endl;
-            } else {
-                cout << "Not founded" << endl;
-            }
+            return this->find(t);
         }
 
-        T find(T &templ)
+        bool find(T &templ)
         {
             T t;
             for (auto p : l) {
                 if (templ.compare_my_class_na_easy_brat_function(p)) {
-                    return p;
+                    templ = p;
+                    return true;
                 }
             }
 
-            return t;
+            return false;
+        }
+
+        void printC(T &t)
+        {
+            for (auto p : l) {
+                if (t.compare_my_class_na_easy_brat_function(p)) {
+                    cout << p;
+                }
+            }
         }
 
         void print_all()
@@ -84,12 +89,11 @@ namespace DB {
 
         bool del_rec(T &temp)
         {
-            T find = find(temp);
-            if (find == nullptr) {
-                cout << "This records have not founded" << endl;
+            bool c = find(temp);
+            if (!c) {
                 return false;
             } else {
-                l.erase(find(l.begin(), l.end(), find));
+                l.erase(std::find(l.begin(), l.end(), temp));
             }
             return true;
         }
@@ -113,6 +117,11 @@ namespace DB {
                 l.push_back(t);
             }
 
+        }
+
+        void del_oneC(T &t)
+        {
+            while (del_rec(t)) {}
         }
     };
 }

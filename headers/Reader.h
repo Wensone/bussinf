@@ -24,6 +24,10 @@ public:
 
     static bool setNumber(int number);
 
+    bool operator==(const Reader &rhs) const;
+
+    bool operator!=(const Reader &rhs) const;
+
     void setFio(const string &fio);
 
     void setAddress(const string &address);

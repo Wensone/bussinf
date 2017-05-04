@@ -6,5 +6,6 @@
 int main()
 {
    BDcommunity base;
+    base.menu();
 
 }

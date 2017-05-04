@@ -18,18 +18,8 @@ private:
 public:
     BDcommunity()
     {
-        cout << "Enter starting input and output file by Readers" << endl;
-        string in, out;
-        cin >> in >> out;
-        reader = new DB::DataBase<Reader>(in, out);
-
-        cout << "Enter starting input and output file by Cartoteka" << endl;
-        cin >> in >> out;
-        card = new DB::DataBase<Cartoteka>(in, out);
-
-        cout << "Enable commands :" << endl;
-        // commands
-        cout << "starting base for edition" << endl;
+        reader = new DB::DataBase<Reader>("", "");
+        card = new DB::DataBase<Cartoteka>("", "");
         base = 1;
     }
 
@@ -44,54 +34,42 @@ public:
         return base;
     }
 
-    // выбираем базу для работы
     void change_base()
     {
-        cout << "Enter numbedr Base :" << endl
-             << "1.Reader\n2.Cartoteka" << endl;
-        do {
-            cin >> base;
-            if (base != r || base != c) {
-                cout << "Incorrect number of bd" << endl;
-            }
-        } while (base < r || base > c);
+        this->base = (base == 1) ? 2 : 1;
+    }
 
+    void checkIO(bool &in, bool &out)
+    {
+        if (base == 1) {
+            out = reader->valid_write();
+            in = reader->valid_read();
+        } else {
+            in = card->valid_read();
+            out = card->valid_write();
+        }
     }
 
     void create()
     {
-        switch (base) {
-            case r : {
-                reader->generate();
-                break;
-            }
-
-            case c : {
-                card->generate();
-                break;
-            }
+        if (base == r) {
+            reader->generate();
+        } else {
+            card->generate();
         }
     }
 
     void printBase()
     {
-        switch (base) {
-            case r : {
-                reader->print_all();
-                break;
-            }
-            case c : {
-                card->print_all();
-                break;
-            }
+        if (base == r) {
+            reader->print_all();
+        } else {
+            card->print_all();
         }
     }
 
-    void switch_input()
+    void switch_input(string newfilename)
     {
-        cout << "Enter new input filename" << endl;
-        string newfilename;
-        cin >> newfilename;
         if (base == 1) {
             reader->rdreopen(newfilename);
         } else {
@@ -99,11 +77,8 @@ public:
         }
     }
 
-    void switch_output()
+    void switch_output(string newfilename)
     {
-        cout << "Enter new output filename" << endl;
-        string newfilename;
-        cin >> newfilename;
         if (base == 1) {
             reader->wrreopen(newfilename);
         } else {
@@ -111,9 +86,9 @@ public:
         }
     }
 
-    void add_new_record()
+    void add_new_record(Reader rec)
     {
-        string new_pole;
+        /*string new_pole;
         if (base == 1) {
             Reader NewReader;
             cout << "FIO : ";
@@ -162,90 +137,168 @@ public:
             cin >> new_pole;
             NewRecord.setYear(new_pole);
             card->add_rec(NewRecord);
-        }
+        }*/
+        reader->add_rec(rec);
     }
 
-    void sort()
+    void add_new_record(Cartoteka rec)
     {
-        cout << "What are you want sort?" << endl;
+        card->add_rec(rec);
+    }
+
+    void sort(int n)
+    {
         if (base == 1) {
-            // list number of pole
-            int n;
-            cin >> n;
-            while (!Reader::setNumber(n)) {
-                cout << "Incorrect value" << endl;
-            }
+            reader->switchCase(n);
             reader->sorting();
         } else {
-            // list number of pole
-            int n;
-            cin >> n;
-            while(!Cartoteka::setPole(n)) {
-                cout << "Incorrect value" << endl;
-                card->sorting();
-            }
+            reader->switchCase(n);
+            card->sorting();
         }
     }
-	
-	void find(){
-		cout << "Enter search key" << endl;
-		string search_key;
-		cin.ignore();
-		getline(cin, search_key);
-		if(base == 1){
-			Reader search;
-			search;
-			//reader->find(search_key);
-		}
-	}
 
-    //find
-    //delete
-    //write
-    //load
-    //printOne
-
-
-    int menu()
+    bool find(Reader s)
     {
-		cout << "\t\t Menu \t\t\n";
-		
-		do{
-			cout << "1. " << endl
-					<< "2. " << endl
-					<< "3. " << endl
-					<< "4. " << endl
-					<< "5. " << endl
-					<< "6. " << endl
-					<< "7. " << endl;
-			int key;
-			cout << "Enter menu point: ";
-			cin >> key;
-			switch (key){
-				case 1: {
-					break;
-				}
-				case 2: {
-					break;
-				}
-				case 3: {
-					break;
-				}
-				case 4: {
-					break;
-				}
-				case 5: {
-					break;
-				}
-				case 6: {
-					break;
-				}
-				case 7: {
-					break;
-				}
-				default: return 0;
-			}
-		}while(true);
+        return reader->find(s);
+    }
+
+    bool find(Cartoteka s)
+    {
+        return card->find(s);
+    }
+
+    bool del_record(Reader &t)
+    {
+        return reader->del_rec(t);
+    }
+
+    bool del_record(Cartoteka &t)
+    {
+        return card->del_rec(t);
+    }
+
+    void del_copy(Reader &T)
+    {
+        reader->del_oneC(T);
+    }
+
+    void del_copy(Cartoteka &T)
+    {
+        card->del_oneC(T);
+    }
+    int write()
+    {
+        if (base == 1) {
+            if (!reader->valid_write()) return EXIT_FAILURE;
+            reader->write();
+        } else {
+            if (!card->valid_write()) return EXIT_FAILURE;
+            card->write();
+        }
+        return EXIT_SUCCESS;
+    }
+
+    int load()
+    {
+        if (base == 1) {
+            if (!reader->valid_read())
+                return EXIT_FAILURE;
+            reader->load();
+        } else {
+            if (!card->valid_read())
+                return EXIT_FAILURE;
+            card->load();
+        }
+        return EXIT_SUCCESS;
+    }
+
+    void print_onec(Reader &t)
+    {
+        reader->printC(t);
+    }
+
+    void print_onec(Cartoteka &t)
+    {
+        card->printC(t);
+    }
+
+    void del_base()
+    {
+        if (base == 1) {
+            reader->clean_your_ass();
+        } else {
+            card->clean_your_ass();
+        }
+    }
+
+
+    void menu()
+    {
+        cout << "\t\t Menu \t\t\n";
+
+        do {
+            cout << "Now base is " << ((base == 1) ? "Reader" : "Cartoteka") << endl;
+            bool in, out;
+            this->checkIO(in, out);
+            cout << "Input : " << ((in) ? "YES " : " NO ") << "| Output : "  << ((out) ? "YES" : "NO") << endl;
+            cout << "1. Switch base" << endl
+                 << "2. Generate" << endl
+                 << "3. Print all base" << endl
+                 << "4. load" << endl
+                 << "5. Write" << endl
+                 << "6. Delete base" << endl
+                 << "7. Switch input file" << endl
+                 << "8. Switch output file" << endl;
+            int key;
+            cout << "Enter menu point: ";
+            cin >> key;
+            switch (key) {
+                case 1: {
+                    this->change_base();
+                    break;
+                }
+                case 2: {
+                    this->create();
+                    break;
+                }
+                case 3: {
+                    this->printBase();
+                    break;
+                }
+                case 4: {
+                    if (this->load()) {
+                        cout << "Cannot write";
+                    }
+                    break;
+                }
+                case 5: {
+                    if (this->write()) {
+                        cout << "Cannot write" << endl;
+                    }
+                    break;
+                }
+                case 6: {
+                    this->del_base();
+                    break;
+                }
+                case 7: {
+                    cout << "Enter new path" << endl;
+                    string file;
+                    cin >> file;
+                    this->switch_input(file);
+                    break;
+                }
+                case 8 : {
+                    cout << "Enter new path" << endl;
+                    string file;
+                    cin >> file;
+                    this->switch_output(file);
+                    break;
+                }
+                default:
+                    return;
+            }
+        } while (true);
     }
 
 };

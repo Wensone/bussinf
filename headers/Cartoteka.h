@@ -49,6 +49,10 @@ public:
 
     static bool setPole(int pole);
 
+    bool operator==(const Cartoteka &rhs) const;
+
+    bool operator!=(const Cartoteka &rhs) const;
+
 };
 
 #endif //BASEDATA_CARTOTEKA_H

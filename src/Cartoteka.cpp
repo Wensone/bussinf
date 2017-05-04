@@ -213,6 +213,22 @@ bool Cartoteka::setPole(int pole)
     return true;
 }
 
+bool Cartoteka::operator==(const Cartoteka &rhs) const
+{
+    return author == rhs.author &&
+           name == rhs.name &&
+           publishing == rhs.publishing &&
+           year == rhs.year &&
+           section == rhs.section &&
+           avail == rhs.avail &&
+           valuation == rhs.valuation;
+}
+
+bool Cartoteka::operator!=(const Cartoteka &rhs) const
+{
+    return !(rhs == *this);
+}
+
 bool Cartoteka::operator<(const Cartoteka &rhs) const
 {
     if (pole == 1)
