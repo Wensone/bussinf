@@ -123,7 +123,8 @@ void BDcommunity::menu()
              << "9. Sort" << endl
              << "10 Add record in base" << endl
              << "11. Delete record" << endl
-             << "12. Clear scree" << endl;
+             << "12. Clear screen" << endl
+             << "13. Delete all records by template" << endl;
 
         int key;
         cout << "Enter menu point: ";
@@ -202,12 +203,24 @@ void BDcommunity::menu()
                     }
                 } else {
                     Cartoteka cd = enter_Cartoteka();
-                    this->del_record(cd);
+                    if (this->del_record(cd)) {
+                        cout << "Deleted success" << endl;
+                    }
                 }
                 break;
             }
             case 12 : {
                 this->clear_screen();
+                break;
+            }
+            case 13 : {
+                if (base == 1) {
+                    Reader rd = enter_Reader();
+                    this->del_copyOne(rd);
+                } else {
+                    Cartoteka cd = enter_Cartoteka();
+                    this->del_copyOne(cd);
+                }
                 break;
             }
             default:
@@ -373,7 +386,24 @@ bool BDcommunity::del_record(Cartoteka &t)
     return card->del_rec(t);
 }
 
+
+
 void BDcommunity::clear_screen()
 {
     system(clr);
+}
+
+void BDcommunity::console(int argc, char **argv)
+{
+
+}
+
+void BDcommunity::del_copyOne(Reader &T)
+{
+    reader->del_oneC(T);
+}
+
+void BDcommunity::del_copyOne(Cartoteka &T)
+{
+    card->del_oneC(T);
 }
