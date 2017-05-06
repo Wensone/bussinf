@@ -79,6 +79,12 @@ public:
 
     void menu();
 
+    void del_copyOne(Reader &T);
+
+    void del_copyOne(Cartoteka &T);
+
+    void console(int argc, char **argv);
+
 };
 
 #endif //BASEDATA_BDCOMMUNITY_H
