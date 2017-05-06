@@ -124,7 +124,9 @@ void BDcommunity::menu()
              << "10 Add record in base" << endl
              << "11. Delete record" << endl
              << "12. Clear screen" << endl
-             << "13. Delete all records by template" << endl;
+             << "13. Delete all records by template" << endl
+             << "14. Print all records by template" << endl
+             << "15. Report" << endl;
 
         int key;
         cout << "Enter menu point: ";
@@ -207,6 +209,7 @@ void BDcommunity::menu()
                         cout << "Deleted success" << endl;
                     }
                 }
+                this->write();
                 break;
             }
             case 12 : {
@@ -220,6 +223,16 @@ void BDcommunity::menu()
                 } else {
                     Cartoteka cd = enter_Cartoteka();
                     this->del_copyOne(cd);
+                }
+                break;
+            }
+            case 14 : {
+                if (base == 1) {
+                    Reader t = enter_Reader();
+                    this->print_onec(t);
+                } else {
+                    Cartoteka t = enter_Cartoteka();
+                    this->print_onec(t);
                 }
                 break;
             }
@@ -264,6 +277,7 @@ void BDcommunity::create()
 void BDcommunity::add_new_record(Cartoteka rec)
 {
     card->add_rec(rec);
+    card->write_one(rec);
 }
 
 void BDcommunity::printBase()
@@ -311,6 +325,8 @@ void BDcommunity::del_copy(Reader &T)
 void BDcommunity::add_new_record(Reader rec)
 {
     reader->add_rec(rec);
+    reader->write_one(rec);
+
 }
 
 BDcommunity::~BDcommunity()
@@ -387,7 +403,6 @@ bool BDcommunity::del_record(Cartoteka &t)
 }
 
 
-
 void BDcommunity::clear_screen()
 {
     system(clr);
@@ -395,7 +410,104 @@ void BDcommunity::clear_screen()
 
 void BDcommunity::console(int argc, char **argv)
 {
+    opterr = 0;
+    int choose = 0;
+    while ((choose = getopt(argc, argv, "f:hb:i:o:c:a:d:p:s:"))) {
+        switch (choose) {
+            case 'f' : {
+                // open filename and read
+                return;
+            }
+            case 'a' : {
+                if (base == 1) {
+                    Reader t;
+                    //pars reader
+                    add_new_record(t);
 
+                } else {
+                    Cartoteka t;
+                    //pars cartoteka
+                    add_new_record(t);
+                }
+
+                break;
+            }
+            case 'd' : {
+                if (base == 1) {
+                    Reader t;
+                    //pars
+                    del_copy(t);
+                } else {
+                    Cartoteka t;
+                    //pars
+                    del_copy(t);
+                }
+                break;
+            }
+            case 'p' : {
+                if (base == 1) {
+                    Reader t;
+                    //pars
+                    print_onec(t);
+                } else {
+                    Cartoteka t;
+                    //pars
+                    print_onec(t);
+                }
+                break;
+            }
+            case 's' : {
+                sort(atoi(optarg));
+                break;
+            }
+            case 'b' : {
+                int b = atoi(optarg);
+                if (base != b) change_base();
+                break;
+            }
+            case 'i' : {
+                switch_input(optarg);
+                break;
+            }
+            case 'o' : {
+                switch_output(optarg);
+                break;
+            }
+            case 'c' : {
+                switch (atoi(optarg)) {
+                    case 1 : {
+                        this->create();
+                        break;
+                    }
+                    case 2 : {
+                        this->printBase();
+                        break;
+                    }
+                    case 3 : {
+                        del_base();
+                        break;
+                    }
+                    case 4 : {
+                        //report
+                        break;
+                    }
+                    default: {
+                        cout << "Incorrect" << endl;
+                    }
+                }
+
+                break;
+            }
+            case 'h' : {
+                cout << "1. Generate" << endl
+                     << "2. Print all base" << endl
+                     << "3. Delete base" << endl
+                     << "4. Report" << endl;
+            }
+            default:
+                return;
+        }
+    }
 }
 
 void BDcommunity::del_copyOne(Reader &T)

@@ -35,6 +35,12 @@ namespace DB {
 
         }
 
+        void write_one(T &t)
+        {
+            if (!valid_write()) return;;
+            fout << t << endl;
+        }
+
         void read()
         {
             if (!valid_read()) return;
