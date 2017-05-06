@@ -147,9 +147,8 @@ bool Reader::operator<(const Reader &b)
     if (number == 4) return book_list < b.book_list; // список взятых книг
     if (number == 5) return time_take < b.time_take; // время взятия
     if (number == 6) return time_using < b.time_using; // срок пользования
-    if (number == 7) return book_genre < b.book_genre; // жанры
+    return book_genre < b.book_genre; // жанры
 
-    return false;
 }
 
 bool Reader::compare_my_class_na_easy_brat_function(Reader &b)

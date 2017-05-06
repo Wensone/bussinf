@@ -3,6 +3,7 @@
 
 #include "Cartoteka.h"
 #include "Reader.h"
+#include <getopt.h>
 #include "DataBase.h"
 
 #ifdef unix
@@ -84,6 +85,13 @@ public:
     void del_copyOne(Cartoteka &T);
 
     void console(int argc, char **argv);
+
+    // parse Reader
+    // parse Cartoteka
+    //valid reader
+    //valid card
+
+    void readInstruction(char *file);
 
 };
 
