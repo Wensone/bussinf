@@ -90,7 +90,8 @@ public:
     // parse Cartoteka
     //valid reader
     //valid card
-    //readInstructionInFile
+
+    void readInstruction(char *file);
 
 };
 

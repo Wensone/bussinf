@@ -519,3 +519,72 @@ void BDcommunity::del_copyOne(Cartoteka &T)
 {
     card->del_oneC(T);
 }
+
+void BDcommunity::readInstruction(char *file)
+{
+    ifstream instructioin(file);
+
+    string command;
+
+    while (!instructioin.eof()) {
+        instructioin >> command;
+
+        if (command == "base") {
+            int n;
+            instructioin >> n;
+            if (base != n) change_base();
+        } else if (command == "input") {
+            string fname;
+            instructioin >> fname;
+            switch_input(fname);
+        } else if (command == "output") {
+            string fname;
+            instructioin >> fname;
+            switch_output(fname);
+        } else if (command == "addRecord") {
+            if (base == 1) {
+                Reader t;
+                //parse
+                add_new_record(t);
+            } else {
+                Cartoteka t;
+                //parse
+                add_new_record(t);
+            }
+        } else if (command == "deleteRecord") {
+            if (base == 1) {
+                Reader t;
+                //parse
+                del_copy(t);
+            } else {
+                Cartoteka t;
+                //parse
+                del_copy(t);
+            }
+        } else if (command == "delBase") {
+            del_base();
+        } else if (command == "load") {
+            load();
+        } else if (command == "write") {
+            write();
+        } else if (command == "sort") {
+            int n;
+            instructioin >> n;
+            sort(n);
+        } else if (command == "PrintBase") {
+            printBase();
+        } else if (command == "Print") {
+            if (base == 1) {
+                Reader t;
+                //parse
+                print_onec(t);
+            } else {
+                Cartoteka t;
+                //parse
+                print_onec(t);
+            }
+        } else if (command == "report") {
+
+        }
+    }
+}
