@@ -415,7 +415,7 @@ void BDcommunity::console(int argc, char **argv)
     while ((choose = getopt(argc, argv, "f:hb:i:o:c:a:d:p:s:"))) {
         switch (choose) {
             case 'f' : {
-                // open filename and read
+                readInstruction(optarg);
                 return;
             }
             case 'a' : {
@@ -587,4 +587,5 @@ void BDcommunity::readInstruction(char *file)
 
         }
     }
+    instructioin.close();
 }
