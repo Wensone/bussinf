@@ -412,6 +412,7 @@ void BDcommunity::console(int argc, char **argv)
 {
     opterr = 0;
     int choose = 0;
+	ifstream f;
     while ((choose = getopt(argc, argv, "f:hb:i:o:c:a:d:p:s:"))) {
         switch (choose) {
             case 'f' : {
@@ -421,12 +422,13 @@ void BDcommunity::console(int argc, char **argv)
             case 'a' : {
                 if (base == 1) {
                     Reader t;
-                    //pars reader
-                    add_new_record(t);
+					
+					t = parse_reader(f, optarg);
+					add_new_record(t);
 
                 } else {
                     Cartoteka t;
-                    //pars cartoteka
+                    t = parse_card(f, optarg);
                     add_new_record(t);
                 }
 
@@ -435,11 +437,11 @@ void BDcommunity::console(int argc, char **argv)
             case 'd' : {
                 if (base == 1) {
                     Reader t;
-                    //pars
+					t = parse_reader(f, optarg);
                     del_copy(t);
                 } else {
                     Cartoteka t;
-                    //pars
+					t = parse_card(f, optarg);
                     del_copy(t);
                 }
                 break;
@@ -447,11 +449,11 @@ void BDcommunity::console(int argc, char **argv)
             case 'p' : {
                 if (base == 1) {
                     Reader t;
-                    //pars
+					t = parse_reader(f, optarg);
                     print_onec(t);
                 } else {
                     Cartoteka t;
-                    //pars
+					t = parse_card(f, optarg);
                     print_onec(t);
                 }
                 break;
@@ -544,21 +546,21 @@ void BDcommunity::readInstruction(char *file)
         } else if (command == "addRecord") {
             if (base == 1) {
                 Reader t;
-                //parse
+				t = parse_reader(instructioin);
                 add_new_record(t);
             } else {
                 Cartoteka t;
-                //parse
+				t = parse_card(instructioin);
                 add_new_record(t);
             }
         } else if (command == "deleteRecord") {
             if (base == 1) {
                 Reader t;
-                //parse
+				t = parse_reader(instructioin);
                 del_copy(t);
             } else {
                 Cartoteka t;
-                //parse
+				t = parse_card(instructioin);
                 del_copy(t);
             }
         } else if (command == "delBase") {
@@ -576,11 +578,11 @@ void BDcommunity::readInstruction(char *file)
         } else if (command == "Print") {
             if (base == 1) {
                 Reader t;
-                parse_reader(instructioin);
+				t = parse_reader(instructioin);
                 print_onec(t);
             } else {
                 Cartoteka t;
-				parse_card(instructioin);
+				t = parse_card(instructioin);
                 print_onec(t);
             }
         } else if (command == "report") {
@@ -593,7 +595,7 @@ void BDcommunity::readInstruction(char *file)
 
 Reader BDcommunity::parse_reader(ifstream &os) {
 	Reader rd;
-	
+
 	string fio;
 	string address;
 	string email;
@@ -608,7 +610,7 @@ Reader BDcommunity::parse_reader(ifstream &os) {
 	getline(os, book_list, '/');
 	getline(os, time_take, '/');
 	getline(os, time_using, '/');
-	getline(os, book_genre, '/');
+	getline(os, book_genre, '\n');
 	
 	rd.setFio(fio);
 	rd.setAddress(address);
@@ -638,7 +640,7 @@ Cartoteka BDcommunity::parse_card(ifstream &os) {
 	getline(os, year, '/');
 	getline(os, section, '/');
 	getline(os, avail, '/');
-	getline(os, valuation, '/');
+	getline(os, valuation, '\n');
 	
 	card.setAuthor(author);
 	card.setName(name);
@@ -649,4 +651,14 @@ Cartoteka BDcommunity::parse_card(ifstream &os) {
 	card.setValuation(valuation);
 	
 	return card;
+}
+
+Reader BDcommunity::parse_reader(string s) {
+	// Дописать это дермище на парсинг строки
+	return Reader();
+}
+
+Cartoteka BDcommunity::parse_card(string s) {
+	// Дописать это дермище на парсинг строки
+	return Cartoteka();
 }
