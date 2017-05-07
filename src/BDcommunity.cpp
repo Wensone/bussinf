@@ -423,12 +423,12 @@ void BDcommunity::console(int argc, char **argv)
                 if (base == 1) {
                     Reader t;
 					
-					t = parse_reader(f, optarg);
+					t = parse_reader(optarg);
 					add_new_record(t);
 
                 } else {
                     Cartoteka t;
-                    t = parse_card(f, optarg);
+                    t = parse_card(optarg);
                     add_new_record(t);
                 }
 
@@ -437,11 +437,11 @@ void BDcommunity::console(int argc, char **argv)
             case 'd' : {
                 if (base == 1) {
                     Reader t;
-					t = parse_reader(f, optarg);
+					t = parse_reader(optarg);
                     del_copy(t);
                 } else {
                     Cartoteka t;
-					t = parse_card(f, optarg);
+					t = parse_card(optarg);
                     del_copy(t);
                 }
                 break;
@@ -449,11 +449,11 @@ void BDcommunity::console(int argc, char **argv)
             case 'p' : {
                 if (base == 1) {
                     Reader t;
-					t = parse_reader(f, optarg);
+					t = parse_reader(optarg);
                     print_onec(t);
                 } else {
                     Cartoteka t;
-					t = parse_card(f, optarg);
+					t = parse_card(optarg);
                     print_onec(t);
                 }
                 break;
