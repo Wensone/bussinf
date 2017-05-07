@@ -576,11 +576,11 @@ void BDcommunity::readInstruction(char *file)
         } else if (command == "Print") {
             if (base == 1) {
                 Reader t;
-                //parse
+                parse_reader(instructioin);
                 print_onec(t);
             } else {
                 Cartoteka t;
-                //parse
+				parse_card(instructioin);
                 print_onec(t);
             }
         } else if (command == "report") {
@@ -588,4 +588,65 @@ void BDcommunity::readInstruction(char *file)
         }
     }
     instructioin.close();
+	
+}
+
+Reader BDcommunity::parse_reader(ifstream &os) {
+	Reader rd;
+	
+	string fio;
+	string address;
+	string email;
+	string book_list; // список взятых книг
+	string time_take; // время взятия
+	string time_using; // срок пользования
+	string book_genre;
+	
+	getline(os, fio, '/');
+	getline(os, address, '/');
+	getline(os, email, '/');
+	getline(os, book_list, '/');
+	getline(os, time_take, '/');
+	getline(os, time_using, '/');
+	getline(os, book_genre, '/');
+	
+	rd.setFio(fio);
+	rd.setAddress(address);
+	rd.setEmail(email);
+	rd.setBook_list(book_list);
+	rd.setTime_take(time_take);
+	rd.setTime_using(time_using);
+	rd.setBook_genre(book_genre);
+	
+	return rd;
+}
+
+Cartoteka BDcommunity::parse_card(ifstream &os) {
+	Cartoteka card;
+	
+	string author; // автор
+	string name; // название
+	string publishing; // издательство
+	string year; // год издания
+	string section; // радел(спец. литература, хобби, хуеби)
+	string avail; // наличие
+	string valuation; // оценка
+	
+	getline(os, author, '/');
+	getline(os, name, '/');
+	getline(os, publishing, '/');
+	getline(os, year, '/');
+	getline(os, section, '/');
+	getline(os, avail, '/');
+	getline(os, valuation, '/');
+	
+	card.setAuthor(author);
+	card.setName(name);
+	card.setPublishing(publishing);
+	card.setYear(year);
+	card.setSection(section);
+	card.setAvail(avail);
+	card.setValuation(valuation);
+	
+	return card;
 }

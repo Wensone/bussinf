@@ -172,6 +172,7 @@ bool Reader::compare_my_class_na_easy_brat_function(Reader &b)
 
     return (c == 0);
 }
+//s = F I O / adress / asd / /
 
 void Reader::read(istream &fin)
 {

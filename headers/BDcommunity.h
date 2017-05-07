@@ -5,6 +5,9 @@
 #include "Reader.h"
 #include <getopt.h>
 #include "DataBase.h"
+#include <cstdio>
+#include <string>
+#include <cstdlib>
 
 #ifdef unix
 #define clr "clear"
@@ -86,8 +89,9 @@ public:
 
     void console(int argc, char **argv);
 
-    // parse Reader
-    // parse Cartoteka
+	Reader parse_reader(ifstream &os);
+	Cartoteka parse_card(ifstream &os);
+
     //valid reader
     //valid card
 
