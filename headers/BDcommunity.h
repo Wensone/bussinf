@@ -88,19 +88,18 @@ public:
     void del_copyOne(Cartoteka &T);
 
     void console(int argc, char **argv);
-	
-	Reader parse_reader(ifstream &os);
-	Cartoteka parse_card(ifstream &os);
-	
-	Reader parse_reader(string s);
-	Cartoteka parse_card(string s);
-	
-	
-	//valid reader
-    //valid card
+
+    Reader parse_reader(ifstream &os);
+
+    Cartoteka parse_card(ifstream &os);
+
+    Reader parse_reader(string s);
+
+    Cartoteka parse_card(string s);
 
     void readInstruction(char *file);
 
+    //report
 };
 
 #endif //BASEDATA_BDCOMMUNITY_H

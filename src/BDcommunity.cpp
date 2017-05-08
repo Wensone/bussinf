@@ -413,11 +413,19 @@ void BDcommunity::console(int argc, char **argv)
     opterr = 0;
     int choose = 0;
 	ifstream f;
-    while ((choose = getopt(argc, argv, "f:hb:i:o:c:a:d:p:s:"))) {
+    while ((choose = getopt(argc, argv, "f:hb:i:o:c:a:d:p:s:lw"))) {
         switch (choose) {
             case 'f' : {
                 readInstruction(optarg);
                 return;
+            }
+            case 'l' : {
+                load();
+                break;
+            }
+            case 'w' : {
+                write();
+                break;
             }
             case 'a' : {
                 if (base == 1) {
@@ -494,13 +502,24 @@ void BDcommunity::console(int argc, char **argv)
                         break;
                     }
                     default: {
-                        cout << "Incorrect" << endl;
+                        cout << "Incorrect (" << optarg << ")"  << endl;
                     }
                 }
 
                 break;
             }
             case 'h' : {
+                // f:hb:i:o:c:a:d:p:s:lw
+                cout << "Template Reader : FIO /..." << endl;
+                cout << "-f filename for read by file" << endl;
+                cout << "-b 1/2 choose base(Reader/Cartoteka)" << endl;
+                cout << "-i file/t -o file - choose input and output files"  << endl;
+                cout << "-a templates - add new record" << endl;
+                cout << "-p templates - print all records by templates" << endl;
+                cout << "-s number_of_sort(1-7)" << endl;
+                cout << "-l - load" << endl;
+                cout << "-w - write" << endl;
+                cout << "Parametrs c :" << endl;
                 cout << "1. Generate" << endl
                      << "2. Print all base" << endl
                      << "3. Delete base" << endl
