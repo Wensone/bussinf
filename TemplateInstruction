@@ -1,0 +1,12 @@
+base 1
+input fileName
+output fileName
+addRecord template_Record/template_Cartoteka
+deleteRecord templ_rec/templ_cart
+delBase
+load
+write
+sort n
+printBase
+print templ_rec/cart
+report
