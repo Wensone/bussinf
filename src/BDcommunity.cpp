@@ -673,11 +673,103 @@ Cartoteka BDcommunity::parse_card(ifstream &os) {
 }
 
 Reader BDcommunity::parse_reader(string s) {
-	// Дописать это дермище на парсинг строки
-	return Reader();
+	Reader rd;
+	
+	string fio;
+	string address;
+	string email;
+	string book_list; // список взятых книг
+	string time_take; // время взятия
+	string time_using; // срок пользования
+	string book_genre;
+	
+	int i = 0;
+	while(s[i] != '/'){
+		fio += s[i];
+	}
+	i++;
+	while(s[i] != '/'){
+		address += s[i];
+	}
+	i++;
+	while(s[i] != '/'){
+		email += s[i];
+	}
+	i++;
+	while(s[i] != '/'){
+		book_list += s[i];
+	}
+	i++;
+	while(s[i] != '/'){
+		time_take += s[i];
+	}
+	i++;
+	while(s[i] != '/'){
+		time_using += s[i];
+	}
+	i++;
+	while(s[i] != '\0'){
+		book_genre += s[i];
+	}
+	
+	rd.setFio(fio);
+	rd.setAddress(address);
+	rd.setEmail(email);
+	rd.setBook_list(book_list);
+	rd.setTime_take(time_take);
+	rd.setTime_using(time_using);
+	rd.setBook_genre(book_genre);
+	
+	return rd;
 }
 
 Cartoteka BDcommunity::parse_card(string s) {
-	// Дописать это дермище на парсинг строки
-	return Cartoteka();
+	Cartoteka card;
+	
+	string author; // автор
+	string name; // название
+	string publishing; // издательство
+	string year; // год издания
+	string section; // радел(спец. литература, хобби, хуеби)
+	string avail; // наличие
+	string valuation; // оценка
+	
+	int i = 0;
+	while(s[i] != '/'){
+		author += s[i];
+	}
+	i++;
+	while(s[i] != '/'){
+		name += s[i];
+	}
+	i++;
+	while(s[i] != '/'){
+		publishing += s[i];
+	}
+	i++;
+	while(s[i] != '/'){
+		year += s[i];
+	}
+	i++;
+	while(s[i] != '/'){
+		section += s[i];
+	}
+	i++;
+	while(s[i] != '/'){
+		avail += s[i];
+	}
+	i++;
+	while(s[i] != '\0'){
+		valuation += s[i];
+	}
+	
+	card.setAuthor(author);
+	card.setName(name);
+	card.setPublishing(publishing);
+	card.setYear(year);
+	card.setSection(section);
+	card.setAvail(avail);
+	card.setValuation(valuation);
+	
+	return card;
 }
