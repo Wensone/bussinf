@@ -4,9 +4,103 @@
 
 int Shopper::number = 1;
 
+string Shopper::i2s(long long value) {
+	string res;
+	do {
+		switch(value % 10) {
+			case 0: res = "0" + res; break;
+			case 1: res = "1" + res; break;
+			case 2: res = "2" + res; break;
+			case 3: res = "3" + res; break;
+			case 4: res = "4" + res; break;
+			case 5: res = "5" + res; break;
+			case 6: res = "6" + res; break;
+			case 7: res = "7" + res; break;
+			case 8: res = "8" + res; break;
+			case 9: res = "9" + res; break;
+		}
+		value /=  10;
+	} while (value);
+	return res;
+}
+
 void Shopper::Generate(list <Shopper> &lst)
 {
-
+	srand((unsigned)time(0));
+	Shopper shopper;
+	
+	ifstream lfin("list_of_car");
+	ifstream tfin("time_buy");
+	
+	//ФИО, адрес, e-mail, список взятых книг
+	//времени взятия книги
+	//срока пользования книгой
+	//предпочитаемые жанры.
+	
+	/*
+		string passport;								// int
+		string balance;									// int
+		string list_of_car; //   		// str
+		string time_buy; //  				// str
+		string car; //  					// int
+		string prices;									// int
+		string data_of_buy; // 					// int
+		string discount;								// int
+    */
+	
+	ofstream fout("shopper");
+	
+	int list_of_car;
+	int time_buy;
+	
+	lfin >> list_of_car;
+	tfin >> time_buy;
+	
+	string a[list_of_car],
+			b[time_buy];
+	int i;
+	i = 0;
+	while (i < list_of_car) {
+		if (lfin.eof()) break;
+		
+		getline(lfin, a[i]);
+		
+		i++;
+	}
+	i = 0;
+	while (i < time_buy) {
+		if (tfin.eof()) break;
+		
+		getline(tfin, b[i]);
+		i++;
+	}
+	
+	i = 0;
+	/*
+		string passport;								// int
+		string balance;									// int
+		string list_of_car; //   						// str
+		string time_buy; //  							// str
+		string car; //  								// int
+		string prices;									// int
+		string data_of_buy; // 							// int
+		string discount;								// int
+    */
+	while (i < 60) {
+		shopper.passport = i2s(5000 + rand() % 1000);
+		shopper.passport += i2s(111111 + rand() % 888888);
+		shopper.balance = i2s(100000 + rand() % 10000000);
+		shopper.list_of_car = a[1 + rand() % list_of_car];
+		shopper.time_buy = b[1 + rand() % time_buy];
+		shopper.car = i2s(1 + rand() % (8*365+(366+366)));
+		shopper.prices = i2s(80000 + rand() % 10000000);
+		shopper.data_of_buy = i2s(1 + rand() % (8*365+(366+366)));
+		shopper.discount = i2s(20000 + rand() % 300000);
+		
+		lst.push_back(shopper);
+		fout << shopper << endl;
+		i++;
+	}
 }
 
 ostream &operator<<(ostream &os, Shopper &rd)
@@ -20,7 +114,6 @@ ostream &operator<<(ostream &os, Shopper &rd)
        << rd.data_of_buy << " / "
        << rd.discount;
     return os;
-    //
 }
 
 bool Shopper::operator<(const Shopper &b)

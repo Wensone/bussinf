@@ -8,14 +8,14 @@ using namespace std;
 
 class Shopper {
 private:
-    string passport;
-    string balance;
-    string list_of_car; // список взятых книг
-    string time_buy; // время взятия
-    string car; // срок пользования
-    string prices;
-    string data_of_buy; // жанры
-    string discount;
+    string passport;								// int
+    string balance;									// int
+    string list_of_car; // список взятых книг		// str
+    string time_buy; // время взятия				// str
+    string car; // срок пользования					// int
+    string prices;									// int
+    string data_of_buy; // жанры					// int
+    string discount;								// int
     static int number;
 public:
     void setPassport(const string &passport);
@@ -53,6 +53,8 @@ public:
     friend ostream &operator<<(ostream &os, Shopper &rd);
 
     void read(istream &in);
+	
+	string i2s(long long value);
 
 };
 
