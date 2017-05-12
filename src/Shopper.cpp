@@ -93,9 +93,9 @@ void Shopper::Generate(list <Shopper> &lst)
 		shopper.passport = i2s(5000 + rand() % 1000);
 		shopper.passport += i2s(111111 + rand() % 888888);
 		shopper.balance = i2s(100000 + rand() % 10000000);
-		shopper.list_of_car = a[1 + rand() % list_of_car];
-		shopper.time_buy = b[1 + rand() % time_buy];
-		shopper.car = c[1 + rand() % (8*365+(366+366))];
+		shopper.list_of_car = a[1 + rand() % list_of_car - 1];
+		shopper.time_buy = b[1 + rand() % time_buy - 1];
+		shopper.car = c[1 + rand() % car - 1];
 		shopper.prices = i2s(80000 + rand() % 10000000);
 		shopper.data_of_buy = i2s(1 + rand() % (8*365+(366+366)));
 		shopper.discount = i2s(20000 + rand() % 300000);
