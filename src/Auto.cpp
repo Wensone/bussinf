@@ -296,3 +296,13 @@ bool Auto::operator!=(const Auto &rhs) const
 {
     return !(rhs == *this);
 }
+
+const string &Auto::getEnd_price() const
+{
+    return end_price;
+}
+
+const string &Auto::getMark() const
+{
+    return mark;
+}

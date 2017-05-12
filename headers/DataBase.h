@@ -35,6 +35,21 @@ namespace DB {
 
         }
 
+        auto begin()
+        {
+            return l.begin();
+        }
+
+        auto end()
+        {
+            return l.end();
+        }
+
+        unsigned getSize()
+        {
+            return l.size();
+        }
+
         void write_one(T &t)
         {
             if (!valid_write()) return;;

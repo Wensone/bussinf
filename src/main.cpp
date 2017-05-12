@@ -1,3 +1,4 @@
+#include <map>
 #include "../headers/BDcommunity.h"
 
 int main(int argc, char **argv)

@@ -1,3 +1,4 @@
+#include <map>
 #include "../headers/BDcommunity.h"
 
 void BDcommunity::print_Auto()
@@ -264,6 +265,10 @@ void BDcommunity::menu()
                     Auto t = in_Auto();
                     this->print_onec(t);
                 }
+                break;
+            }
+            case 15 : {
+                this->report();
                 break;
             }
             default:
@@ -636,7 +641,7 @@ void BDcommunity::readInstruction(char *file)
                 print_onec(t);
             }
         } else if (command == "report") {
-
+            report();
         }
     }
     instructioin.close();
@@ -813,5 +818,23 @@ Auto BDcommunity::parse_Auto(string s) {/*
 
 void BDcommunity::report()
 {
+    int aprice = 0;
+    int adiscount = 0;
+    int abalance = 0;
+    map<string, int> car_count;
+    for (auto p = a->begin(); p != a->end(); ++p) {
+        aprice += atoi(p->getEnd_price().c_str());
+        car_count[p->getMark()] += 1;
+    }
+    for (auto p = s->begin(); p != s->end(); ++p) {
+        adiscount += atoi(p->getDiscount().c_str());
+        abalance += atoi(p->getBalance().c_str());
+    }
 
+    cout << "Average price : " << aprice / a->getSize() << endl;
+    cout << "Average discount : " << adiscount / s->getSize() << endl;
+    cout << "Average balance : " << abalance / s->getSize() << endl;
+    for (auto p = car_count.begin(); p != car_count.end(); ++p) {
+        cout << p->first << ' ' << p->second << endl;
+    }
 }

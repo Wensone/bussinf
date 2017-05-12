@@ -35,6 +35,7 @@ public:
 
     Shopper in_Shopper();
 
+
     Auto in_Auto();
 
     int getBaseNow();

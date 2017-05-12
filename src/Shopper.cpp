@@ -271,3 +271,13 @@ bool Shopper::operator!=(const Shopper &rhs) const
     return !(rhs == *this);
 }
 
+const string &Shopper::getDiscount() const
+{
+    return discount;
+}
+
+const string &Shopper::getBalance() const
+{
+    return balance;
+}
+

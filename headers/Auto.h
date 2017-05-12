@@ -74,6 +74,10 @@ public:
 
     static bool setNumber(int pole);
 
+    const string &getEnd_price() const;
+
+    const string &getMark() const;
+
 };
 
 #endif //BASEDATA_CARTOTEKA_H

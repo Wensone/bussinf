@@ -13,11 +13,17 @@ private:
     string list_of_car; // список автомобилей				// str
     string time_buy; // время покупки						// str
     string car; // покупаемая машина						// str
-    string prices;	// цена									// int
+public:
+	const string &getBalance() const;
+
+private:
+	string prices;	// цена									// int
     string data_of_buy; // дата покупки						// int
     string discount; // скидон								// int
     static int number;
 public:
+    const string &getDiscount() const;
+
     void setPassport(const string &passport);
 
     void setBalance(const string &balance);
