@@ -810,3 +810,8 @@ Auto BDcommunity::parse_Auto(string s) {/*
 	
 	return a;*/
 }
+
+void BDcommunity::report()
+{
+
+}

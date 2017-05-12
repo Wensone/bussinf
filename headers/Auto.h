@@ -4,7 +4,10 @@
 
 #include <fstream>
 #include <list>
-
+#include <iostream>
+#include <string>
+#include <ctime>
+#include <cstdlib>
 using namespace std;
 
 class Auto {

@@ -99,7 +99,7 @@ public:
 
     void readInstruction(char *file);
 
-    //report
+    void report();
 };
 
 #endif //BASEDATA_BDCOMMUNITY_H
