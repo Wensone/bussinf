@@ -29,7 +29,7 @@ namespace DB {
         {
             if (!valid_write()) return;
 
-            for (auto p : l) {
+            for (auto p : l) { // for (list<T>::iterator p = l.begin(); p != l.end(); ++p)
                 fout << p << endl;
             }
 
