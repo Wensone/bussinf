@@ -5,7 +5,7 @@
 #include <iostream>
 #include <algorithm>
 #include "DataIO.h"
-#include "Reader.h"
+#include "Shopper.h"
 
 using namespace std;
 
@@ -56,7 +56,7 @@ namespace DB {
         bool find(T &templ)
         {
             for (auto p : l) {
-                if (templ.compare_my_class_na_easy_brat_function(p)) {
+                if (templ.cmp(p)) {
                     templ = p;
                     return true;
                 }
@@ -68,7 +68,7 @@ namespace DB {
         void printC(T &t)
         {
             for (auto p : l) {
-                if (t.compare_my_class_na_easy_brat_function(p)) {
+                if (t.cmp(p)) {
                     cout << p;
                 }
             }

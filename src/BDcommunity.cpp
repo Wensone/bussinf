@@ -1,96 +1,126 @@
 #include "../headers/BDcommunity.h"
 
-void BDcommunity::print_Cartoteka()
+void BDcommunity::print_Auto()
 {
-    cout << "1. Author" << endl
-         << "2. Name " << endl
-         << "3. publishing" << endl
-         << "4. Year" << endl
-         << "5. Section" << endl
-         << "6. Avail" << endl
-         << "7. Valuation" << endl;
+    cout << "1. mark" << endl
+         << "2. outMark " << endl
+         << "3. inMark" << endl
+         << "4. defects" << endl
+         << "5. engine" << endl
+         << "6. power" << endl
+         << "7. year" << endl
+         << "8. type" << endl
+         << "9. name_auc" << endl
+         << "10. date" << endl
+         << "11. first_price" << endl
+         << "12. end_price" << endl
+         << "13. last_sold" << endl;
 }
 
-void BDcommunity::print_Reader()
+void BDcommunity::print_Shopper()
 {
-    cout << "1. FIO" << endl
-         << "2. Address " << endl
-         << "3. E-mail" << endl
-         << "4. Book list" << endl
-         << "5. Time take" << endl
-         << "6. Time using" << endl
-         << "7. Book genre" << endl;
+
+    cout << "1. passport" << endl
+         << "2. balance " << endl
+         << "3. list_of_car" << endl
+         << "4. time_buy" << endl
+         << "5. car" << endl
+         << "6. prices" << endl
+         << "7. data_of_buy" << endl
+         << "8. discount" << endl;
 }
 
-Reader BDcommunity::enter_Reader()
+Shopper BDcommunity::in_Shopper()
 {
     string new_pole;
-    Reader NewReader;
+    Shopper shop;
     {
 
-        cout << "FIO : ";
+        cout << "Passport : ";
         cin.ignore();
         getline(cin, new_pole);
-        NewReader.setFio(new_pole);
-        cout << "Address : ";
+        shop.setPassport(new_pole);
+        cout << "Balance : ";
 
         getline(cin, new_pole);
-        NewReader.setAddress(new_pole);
-        cout << "Email : ";
+        shop.setBalance(new_pole);
+        cout << "List of cars : ";
         getline(cin, new_pole);
-        NewReader.setEmail(new_pole);
-        cout << "Book list : ";
+        shop.setCar(new_pole);
+        cout << "Time buy : ";
 
         getline(cin, new_pole);
-        NewReader.setBook_list(new_pole);
-        cout << "Book genre : ";
+        shop.setTime_buy(new_pole);
+        cout << "Cars : ";
 
         getline(cin, new_pole);
-        NewReader.setBook_genre(new_pole);
-        cout << "Time taking : ";
+        shop.setCar(new_pole);
+        cout << "Prices : ";
         getline(cin, new_pole);
-        NewReader.setTime_take(new_pole);
-        cout << "Time using : ";
+        shop.setPrices(new_pole);
+        cout << "Date of buy : ";
         getline(cin, new_pole);
-        NewReader.setTime_using(new_pole);
+        shop.setData_of_buy(new_pole);
+
+        cout << "Discount : ";
+        getline(cin, new_pole);
+        shop.setDiscount(new_pole);
         cin.clear();
-        //reader->add_rec(NewReader);
+        //s->add_rec(shop);
     }
-    return NewReader;
+    return shop;
 }
 
-Cartoteka BDcommunity::enter_Cartoteka()
+Auto BDcommunity::in_Auto()
 {
     string new_pole;
-    Cartoteka NewRecord;
+    Auto _auto;
     {
 
-        cout << "Author : ";
+        cout << "mark : ";
         cin.ignore();
         getline(cin, new_pole);
-        NewRecord.setAuthor(new_pole);
-        cout << "Name : ";
+        _auto.setMark(new_pole);
+        cout << "outMark : ";
         getline(cin, new_pole);
-        NewRecord.setName(new_pole);
-        cout << "Avail : ";
+        _auto.setOutMark(new_pole);
+        cout << "inMark : ";
         getline(cin, new_pole);
-        NewRecord.setAvail(new_pole);
-        cout << "Publishing : ";
+        _auto.setInMark(new_pole);
+        cout << "defects : ";
         getline(cin, new_pole);
-        NewRecord.setPublishing(new_pole);
-        cout << "Setciton : ";
+        _auto.setDefects(new_pole);
+        cout << "engine : ";
         getline(cin, new_pole);
-        NewRecord.setSection(new_pole);
-        cout << "Valution : ";
+        _auto.setEngine(new_pole);
+        cout << "power : ";
         getline(cin, new_pole);
-        NewRecord.setValuation(new_pole);
+        _auto.setPower(new_pole);
         cout << "Year : ";
         getline(cin, new_pole);
-        NewRecord.setYear(new_pole);
+        _auto.setYear(new_pole);
+        cout << "type : ";
+        getline(cin, new_pole);
+        _auto.setType(new_pole);
+        cout << "name_auc : ";
+        getline(cin, new_pole);
+        _auto.setName_auc(new_pole);
+        cout << "date : ";
+        getline(cin, new_pole);
+        _auto.setDate(new_pole);
+        cout << "first_price : ";
+        getline(cin, new_pole);
+        _auto.setFirst_price(new_pole);
+        cout << "end_price : ";
+        getline(cin, new_pole);
+        _auto.setEnd_price(new_pole);
+        cout << "last sold : ";
+        getline(cin, new_pole);
+        _auto.setLast_sold(new_pole);
         cin.clear();
-        //card->add_rec(NewRecord);
+        //a->add_rec(_auto);
     }
-    return NewRecord;
+    return _auto;
 }
 
 int BDcommunity::getBaseNow()
@@ -108,7 +138,7 @@ void BDcommunity::menu()
     cout << "\t\t Menu \t\t\n";
 
     do {
-        cout << "Now base is " << ((base == 1) ? "Reader" : "Cartoteka") << endl;
+        cout << "Now base is " << ((base == 1) ? "Shopper" : "Auto") << endl;
         bool in, out;
         this->checkIO(in, out);
         cout << "Input : " << ((in) ? "YES " : " NO ") << "| Output : " << ((out) ? "YES" : "NO") << endl;
@@ -176,11 +206,11 @@ void BDcommunity::menu()
             }
             case 9 : {
                 system("clear");
-                cout << "What is the pole:";
+                cout << "What is the number:";
                 if (base == 1) {
-                    print_Reader();
+                    print_Shopper();
                 } else {
-                    print_Cartoteka();
+                    print_Auto();
                 }
                 int n;
                 do {
@@ -191,20 +221,20 @@ void BDcommunity::menu()
             }
             case 10 : {
                 if (base == 1) {
-                    this->add_new_record(enter_Reader());
+                    this->add_new_record(in_Shopper());
                 } else {
-                    this->add_new_record(enter_Cartoteka());
+                    this->add_new_record(in_Auto());
                 }
                 break;
             }
             case 11 : {
                 if (base == 1) {
-                    Reader rd = enter_Reader();
+                    Shopper rd = in_Shopper();
                     if (this->del_record(rd)) {
                         cout << "Deleted success" << endl;
                     }
                 } else {
-                    Cartoteka cd = enter_Cartoteka();
+                    Auto cd = in_Auto();
                     if (this->del_record(cd)) {
                         cout << "Deleted success" << endl;
                     }
@@ -218,20 +248,20 @@ void BDcommunity::menu()
             }
             case 13 : {
                 if (base == 1) {
-                    Reader rd = enter_Reader();
+                    Shopper rd = in_Shopper();
                     this->del_copyOne(rd);
                 } else {
-                    Cartoteka cd = enter_Cartoteka();
+                    Auto cd = in_Auto();
                     this->del_copyOne(cd);
                 }
                 break;
             }
             case 14 : {
                 if (base == 1) {
-                    Reader t = enter_Reader();
+                    Shopper t = in_Shopper();
                     this->print_onec(t);
                 } else {
-                    Cartoteka t = enter_Cartoteka();
+                    Auto t = in_Auto();
                     this->print_onec(t);
                 }
                 break;
@@ -244,141 +274,141 @@ void BDcommunity::menu()
 
 BDcommunity::BDcommunity()
 {
-    reader = new DB::DataBase<Reader>("", "");
-    card = new DB::DataBase<Cartoteka>("", "");
+    s = new DB::DataBase<Shopper>("", "");
+    a = new DB::DataBase<Auto>("", "");
     base = 1;
 }
 
 void BDcommunity::checkIO(bool &in, bool &out)
 {
     if (base == 1) {
-        out = reader->valid_write();
-        in = reader->valid_read();
+        out = s->valid_write();
+        in = s->valid_read();
     } else {
-        in = card->valid_read();
-        out = card->valid_write();
+        in = a->valid_read();
+        out = a->valid_write();
     }
 }
 
-bool BDcommunity::find(Cartoteka s)
+bool BDcommunity::find(Auto s)
 {
-    return card->find(s);
+    return a->find(s);
 }
 
 void BDcommunity::create()
 {
     if (base == r) {
-        reader->generate();
+        s->generate();
     } else {
-        card->generate();
+        a->generate();
     }
 }
 
-void BDcommunity::add_new_record(Cartoteka rec)
+void BDcommunity::add_new_record(Auto rec)
 {
-    card->add_rec(rec);
-    card->write_one(rec);
+    a->add_rec(rec);
+    a->write_one(rec);
 }
 
 void BDcommunity::printBase()
 {
     if (base == r) {
-        reader->print_all();
+        s->print_all();
     } else {
-        card->print_all();
+        a->print_all();
     }
 }
 
-bool BDcommunity::find(Reader s)
+bool BDcommunity::find(Shopper s)
 {
-    return reader->find(s);
+    return this->s->find(s);
 }
 
-void BDcommunity::del_copy(Cartoteka &T)
+void BDcommunity::del_copy(Auto &T)
 {
-    card->del_oneC(T);
+    a->del_oneC(T);
 }
 
 void BDcommunity::switch_input(string newfilename)
 {
     if (base == 1) {
-        reader->rdreopen(newfilename);
+        s->rdreopen(newfilename);
     } else {
-        card->rdreopen(newfilename);
+        a->rdreopen(newfilename);
     }
 }
 
 void BDcommunity::switch_output(string newfilename)
 {
     if (base == 1) {
-        reader->wrreopen(newfilename);
+        s->wrreopen(newfilename);
     } else {
-        card->wrreopen(newfilename);
+        a->wrreopen(newfilename);
     }
 }
 
-void BDcommunity::del_copy(Reader &T)
+void BDcommunity::del_copy(Shopper &T)
 {
-    reader->del_oneC(T);
+    s->del_oneC(T);
 }
 
-void BDcommunity::add_new_record(Reader rec)
+void BDcommunity::add_new_record(Shopper rec)
 {
-    reader->add_rec(rec);
-    reader->write_one(rec);
+    s->add_rec(rec);
+    s->write_one(rec);
 
 }
 
 BDcommunity::~BDcommunity()
 {
-    delete card;
-    delete reader;
+    delete a;
+    delete s;
 }
 
 void BDcommunity::sort(int n)
 {
     if (base == 1) {
-        reader->switchCase(n);
-        reader->sorting();
+        s->switchCase(n);
+        s->sorting();
     } else {
-        reader->switchCase(n);
-        card->sorting();
+        s->switchCase(n);
+        a->sorting();
     }
 }
 
-void BDcommunity::print_onec(Reader &t)
+void BDcommunity::print_onec(Shopper &t)
 {
-    reader->printC(t);
+    s->printC(t);
 }
 
 void BDcommunity::del_base()
 {
     if (base == 1) {
-        reader->clean_your_ass();
+        s->clean_your_ass();
 
     } else {
-        card->clean_your_ass();
+        a->clean_your_ass();
     }
 }
 
-void BDcommunity::print_onec(Cartoteka &t)
+void BDcommunity::print_onec(Auto &t)
 {
-    card->printC(t);
+    a->printC(t);
 }
 
-bool BDcommunity::del_record(Reader &t)
+bool BDcommunity::del_record(Shopper &t)
 {
-    return reader->del_rec(t);
+    return s->del_rec(t);
 }
 
 int BDcommunity::write()
 {
     if (base == 1) {
-        if (!reader->valid_write()) return EXIT_FAILURE;
-        reader->write();
+        if (!s->valid_write()) return EXIT_FAILURE;
+        s->write();
     } else {
-        if (!card->valid_write()) return EXIT_FAILURE;
-        card->write();
+        if (!a->valid_write()) return EXIT_FAILURE;
+        a->write();
     }
     return EXIT_SUCCESS;
 }
@@ -386,20 +416,20 @@ int BDcommunity::write()
 int BDcommunity::load()
 {
     if (base == 1) {
-        if (!reader->valid_read())
+        if (!s->valid_read())
             return EXIT_FAILURE;
-        reader->load();
+        s->load();
     } else {
-        if (!card->valid_read())
+        if (!a->valid_read())
             return EXIT_FAILURE;
-        card->load();
+        a->load();
     }
     return EXIT_SUCCESS;
 }
 
-bool BDcommunity::del_record(Cartoteka &t)
+bool BDcommunity::del_record(Auto &t)
 {
-    return card->del_rec(t);
+    return a->del_rec(t);
 }
 
 
@@ -429,14 +459,14 @@ void BDcommunity::console(int argc, char **argv)
             }
             case 'a' : {
                 if (base == 1) {
-                    Reader t;
+                    Shopper t;
 					
-					t = parse_reader(optarg);
+					t = parse_Shopper(optarg);
 					add_new_record(t);
 
                 } else {
-                    Cartoteka t;
-                    t = parse_card(optarg);
+                    Auto t;
+                    t = parse_Auto(optarg);
                     add_new_record(t);
                 }
 
@@ -444,24 +474,24 @@ void BDcommunity::console(int argc, char **argv)
             }
             case 'd' : {
                 if (base == 1) {
-                    Reader t;
-					t = parse_reader(optarg);
+                    Shopper t;
+					t = parse_Shopper(optarg);
                     del_copy(t);
                 } else {
-                    Cartoteka t;
-					t = parse_card(optarg);
+                    Auto t;
+					t = parse_Auto(optarg);
                     del_copy(t);
                 }
                 break;
             }
             case 'p' : {
                 if (base == 1) {
-                    Reader t;
-					t = parse_reader(optarg);
+                    Shopper t;
+					t = parse_Shopper(optarg);
                     print_onec(t);
                 } else {
-                    Cartoteka t;
-					t = parse_card(optarg);
+                    Auto t;
+					t = parse_Auto(optarg);
                     print_onec(t);
                 }
                 break;
@@ -510,9 +540,10 @@ void BDcommunity::console(int argc, char **argv)
             }
             case 'h' : {
                 // f:hb:i:o:c:a:d:p:s:lw
-                cout << "Template Reader : FIO /..." << endl;
+                cout << "Template Shopper : FIO /..." << endl;
+                cout << "Template Auto : FIO /..." << endl;
                 cout << "-f filename for read by file" << endl;
-                cout << "-b 1/2 choose base(Reader/Cartoteka)" << endl;
+                cout << "-b 1/2 choose base(Shopper/Auto)" << endl;
                 cout << "-i file/t -o file - choose input and output files"  << endl;
                 cout << "-a templates - add new record" << endl;
                 cout << "-p templates - print all records by templates" << endl;
@@ -531,14 +562,14 @@ void BDcommunity::console(int argc, char **argv)
     }
 }
 
-void BDcommunity::del_copyOne(Reader &T)
+void BDcommunity::del_copyOne(Shopper &T)
 {
-    reader->del_oneC(T);
+    s->del_oneC(T);
 }
 
-void BDcommunity::del_copyOne(Cartoteka &T)
+void BDcommunity::del_copyOne(Auto &T)
 {
-    card->del_oneC(T);
+    a->del_oneC(T);
 }
 
 void BDcommunity::readInstruction(char *file)
@@ -564,22 +595,22 @@ void BDcommunity::readInstruction(char *file)
             switch_output(fname);
         } else if (command == "addRecord") {
             if (base == 1) {
-                Reader t;
-				t = parse_reader(instructioin);
+                Shopper t;
+				t = parse_Shopper(instructioin);
                 add_new_record(t);
             } else {
-                Cartoteka t;
-				t = parse_card(instructioin);
+                Auto t;
+				t = parse_Auto(instructioin);
                 add_new_record(t);
             }
         } else if (command == "deleteRecord") {
             if (base == 1) {
-                Reader t;
-				t = parse_reader(instructioin);
+                Shopper t;
+				t = parse_Shopper(instructioin);
                 del_copy(t);
             } else {
-                Cartoteka t;
-				t = parse_card(instructioin);
+                Auto t;
+				t = parse_Auto(instructioin);
                 del_copy(t);
             }
         } else if (command == "delBase") {
@@ -596,12 +627,12 @@ void BDcommunity::readInstruction(char *file)
             printBase();
         } else if (command == "Print") {
             if (base == 1) {
-                Reader t;
-				t = parse_reader(instructioin);
+                Shopper t;
+				t = parse_Shopper(instructioin);
                 print_onec(t);
             } else {
-                Cartoteka t;
-				t = parse_card(instructioin);
+                Auto t;
+				t = parse_Auto(instructioin);
                 print_onec(t);
             }
         } else if (command == "report") {
@@ -612,8 +643,9 @@ void BDcommunity::readInstruction(char *file)
 	
 }
 
-Reader BDcommunity::parse_reader(ifstream &os) {
-	Reader rd;
+Shopper BDcommunity::parse_Shopper(ifstream &os) {
+    /*
+	Shopper rd;
 
 	string fio;
 	string address;
@@ -640,10 +672,12 @@ Reader BDcommunity::parse_reader(ifstream &os) {
 	rd.setBook_genre(book_genre);
 	
 	return rd;
+     */
 }
 
-Cartoteka BDcommunity::parse_card(ifstream &os) {
-	Cartoteka card;
+Auto BDcommunity::parse_Auto(ifstream &os) {
+    /*
+	Auto a;
 	
 	string author; // автор
 	string name; // название
@@ -661,19 +695,21 @@ Cartoteka BDcommunity::parse_card(ifstream &os) {
 	getline(os, avail, '/');
 	getline(os, valuation, '\n');
 	
-	card.setAuthor(author);
-	card.setName(name);
-	card.setPublishing(publishing);
-	card.setYear(year);
-	card.setSection(section);
-	card.setAvail(avail);
-	card.setValuation(valuation);
+	a.setAuthor(author);
+	a.setName(name);
+	a.setPublishing(publishing);
+	a.setYear(year);
+	a.setSection(section);
+	a.setAvail(avail);
+	a.setValuation(valuation);
 	
-	return card;
+	return a;
+     */
 }
 
-Reader BDcommunity::parse_reader(string s) {
-	Reader rd;
+Shopper BDcommunity::parse_Shopper(string s) {
+    /*
+	Shopper rd;
 	
 	string fio;
 	string address;
@@ -721,10 +757,11 @@ Reader BDcommunity::parse_reader(string s) {
 	rd.setBook_genre(book_genre);
 	
 	return rd;
+     */
 }
 
-Cartoteka BDcommunity::parse_card(string s) {
-	Cartoteka card;
+Auto BDcommunity::parse_Auto(string s) {/*
+	Auto a;
 	
 	string author; // автор
 	string name; // название
@@ -763,13 +800,13 @@ Cartoteka BDcommunity::parse_card(string s) {
 		valuation += s[i];
 	}
 	
-	card.setAuthor(author);
-	card.setName(name);
-	card.setPublishing(publishing);
-	card.setYear(year);
-	card.setSection(section);
-	card.setAvail(avail);
-	card.setValuation(valuation);
+	a.setAuthor(author);
+	a.setName(name);
+	a.setPublishing(publishing);
+	a.setYear(year);
+	a.setSection(section);
+	a.setAvail(avail);
+	a.setValuation(valuation);
 	
-	return card;
+	return a;*/
 }

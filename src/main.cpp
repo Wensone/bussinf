@@ -1,8 +1,9 @@
+#include <iostream>
 #include "../headers/BDcommunity.h"
 
-int main(int argc, char **argv)
+int main()
 {
     BDcommunity base;
-    if (argc < 2) base.menu();
-    else base.console(argc, argv);
+    base.menu();
+    return 0;
 }
