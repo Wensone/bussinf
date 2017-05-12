@@ -8,14 +8,14 @@ using namespace std;
 
 class Shopper {
 private:
-    string passport;								// int
-    string balance;									// int
-    string list_of_car; // список взятых книг		// str
-    string time_buy; // время взятия				// str
-    string car; // срок пользования					// int
-    string prices;									// int
-    string data_of_buy; // жанры					// int
-    string discount;								// int
+    string passport; // серия и номер паспорта				// int
+    string balance; // баланс покупателя					// int
+    string list_of_car; // список автомобилей				// str
+    string time_buy; // время покупки						// str
+    string car; // покупаемая машина						// str
+    string prices;	// цена									// int
+    string data_of_buy; // дата покупки						// int
+    string discount; // скидон								// int
     static int number;
 public:
     void setPassport(const string &passport);

@@ -19,7 +19,7 @@ string Shopper::i2s(long long value) {
 			case 8: res = "8" + res; break;
 			case 9: res = "9" + res; break;
 		}
-		value /=  10;
+		value /= 10;
 	} while (value);
 	return res;
 }
@@ -29,8 +29,9 @@ void Shopper::Generate(list <Shopper> &lst)
 	srand((unsigned)time(0));
 	Shopper shopper;
 	
-	ifstream lfin("list_of_car");
-	ifstream tfin("time_buy");
+	ifstream lfin("../Genpers/list_of_car");
+	ifstream tfin("../Genpers/time_buy");
+	ifstream cfin("../Genpers/car");
 	
 	//ФИО, адрес, e-mail, список взятых книг
 	//времени взятия книги
@@ -38,26 +39,30 @@ void Shopper::Generate(list <Shopper> &lst)
 	//предпочитаемые жанры.
 	
 	/*
-		string passport;								// int
-		string balance;									// int
-		string list_of_car; //   		// str
-		string time_buy; //  				// str
-		string car; //  					// int
-		string prices;									// int
-		string data_of_buy; // 					// int
-		string discount;								// int
+		string passport; // серия и номер паспорта				// int
+		string balance; // баланс покупателя					// int
+		string list_of_car; // список автомобилей				// str
+		string time_buy; // время покупки						// str
+		string car; // покупаемая машина						// str
+		string prices;	// цена									// int
+		string data_of_buy; // дата покупки						// int
+		string discount; // скидон								// int
     */
 	
 	ofstream fout("shopper");
 	
 	int list_of_car;
 	int time_buy;
+	int car;
 	
 	lfin >> list_of_car;
 	tfin >> time_buy;
+	cfin >> car;
 	
 	string a[list_of_car],
-			b[time_buy];
+			b[time_buy],
+			c[car];
+	
 	int i;
 	i = 0;
 	while (i < list_of_car) {
@@ -76,23 +81,21 @@ void Shopper::Generate(list <Shopper> &lst)
 	}
 	
 	i = 0;
-	/*
-		string passport;								// int
-		string balance;									// int
-		string list_of_car; //   						// str
-		string time_buy; //  							// str
-		string car; //  								// int
-		string prices;									// int
-		string data_of_buy; // 							// int
-		string discount;								// int
-    */
+	while (i < car) {
+		if (cfin.eof()) break;
+		
+		getline(cfin, c[i]);
+		i++;
+	}
+	
+	i = 0;
 	while (i < 60) {
 		shopper.passport = i2s(5000 + rand() % 1000);
 		shopper.passport += i2s(111111 + rand() % 888888);
 		shopper.balance = i2s(100000 + rand() % 10000000);
 		shopper.list_of_car = a[1 + rand() % list_of_car];
 		shopper.time_buy = b[1 + rand() % time_buy];
-		shopper.car = i2s(1 + rand() % (8*365+(366+366)));
+		shopper.car = c[1 + rand() % (8*365+(366+366))];
 		shopper.prices = i2s(80000 + rand() % 10000000);
 		shopper.data_of_buy = i2s(1 + rand() % (8*365+(366+366)));
 		shopper.discount = i2s(20000 + rand() % 300000);
