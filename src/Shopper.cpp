@@ -34,22 +34,6 @@ void Shopper::Generate(list <Shopper> &lst)
 	ifstream tfin("../Genpers/time_buy");
 	ifstream cfin("../Genpers/car");
 	
-	//ФИО, адрес, e-mail, список взятых книг
-	//времени взятия книги
-	//срока пользования книгой
-	//предпочитаемые жанры.
-	
-	/*
-		string passport; // серия и номер паспорта				// int
-		string balance; // баланс покупателя					// int
-		string list_of_car; // список автомобилей				// str
-		string time_buy; // время покупки						// str
-		string car; // покупаемая машина						// str
-		string prices;	// цена									// int
-		string data_of_buy; // дата покупки						// int
-		string discount; // скидон								// int
-    */
-	
 	ofstream fout("shopper");
 	
 	int list_of_car;

@@ -12,19 +12,19 @@ using namespace std;
 
 class Auto {
 private:
-    string mark; // автор
-    string outMark; // название
-    string inMark; // издательство
-    string defects; // год издания
-    string engine; // радел(спец. литература, хобби, хуеби)
-    string power; // наличие
-    string year; // оценка
-    string type;
-    string name_auc;
-    string date;
-    string first_price;
-    string end_price;
-    string last_sold;
+	string mark; // марка авто						стр
+	string outMark; // оценка внешнего вида			инт
+	string inMark; // оценка внутреннего вида		инт
+	string defects; // дефекты						стр
+	string engine; // двигатель						стр
+	string power; // мощьность						инт
+	string year; // год								инт
+	string type; // Тип								стр
+	string name_auc; // Название аукциона продажи	стр
+	string date; // дата продажи					инт
+	string first_price; // начальная цена			инт
+	string end_price; // цена продажи				инт
+	string last_sold; // Проследняя продажа			инт
     static int number;
 
 public:

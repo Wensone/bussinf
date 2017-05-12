@@ -533,7 +533,7 @@ void BDcommunity::console(int argc, char **argv)
                         break;
                     }
                     case 4 : {
-                        //report
+                        this->report();
                         break;
                     }
                     default: {
@@ -545,8 +545,6 @@ void BDcommunity::console(int argc, char **argv)
             }
             case 'h' : {
                 // f:hb:i:o:c:a:d:p:s:lw
-                cout << "Template Shopper : FIO /..." << endl;
-                cout << "Template Auto : FIO /..." << endl;
                 cout << "-f filename for read by file" << endl;
                 cout << "-b 1/2 choose base(Shopper/Auto)" << endl;
                 cout << "-i file/t -o file - choose input and output files"  << endl;
@@ -649,171 +647,228 @@ void BDcommunity::readInstruction(char *file)
 }
 
 Shopper BDcommunity::parse_Shopper(ifstream &os) {
-    /*
-	Shopper rd;
-
-	string fio;
-	string address;
-	string email;
-	string book_list; // список взятых книг
-	string time_take; // время взятия
-	string time_using; // срок пользования
-	string book_genre;
+	Shopper shp;
+    
+    string passport; // серия и номер паспорта				// int
+    string balance; // баланс покупателя					// int
+    string list_of_car; // список автомобилей				// str
+    string time_buy; // время покупки						// str
+    string car; // покупаемая машина						// str
+    string prices;	// цена									// int
+    string data_of_buy; // дата покупки						// int
+    string discount; // скидон								// int
 	
-	getline(os, fio, '/');
-	getline(os, address, '/');
-	getline(os, email, '/');
-	getline(os, book_list, '/');
-	getline(os, time_take, '/');
-	getline(os, time_using, '/');
-	getline(os, book_genre, '\n');
+	getline(os, passport, '/');
+	getline(os, balance, '/');
+	getline(os, list_of_car, '/');
+	getline(os, time_buy, '/');
+	getline(os, car, '/');
+	getline(os, prices, '/');
+	getline(os, data_of_buy, '/');
+	getline(os, discount, '\n');
 	
-	rd.setFio(fio);
-	rd.setAddress(address);
-	rd.setEmail(email);
-	rd.setBook_list(book_list);
-	rd.setTime_take(time_take);
-	rd.setTime_using(time_using);
-	rd.setBook_genre(book_genre);
+	shp.setPassport(passport);
+	shp.setBalance(balance);
+	shp.setList_of_car(list_of_car);
+	shp.setTime_buy(time_buy);
+	shp.setCar(car);
+	shp.setPrices(prices);
+	shp.setData_of_buy(data_of_buy);
+	shp.setDiscount(discount);
 	
-	return rd;
-     */
+	return shp;
 }
 
 Auto BDcommunity::parse_Auto(ifstream &os) {
-    /*
-	Auto a;
+	Auto ato;
 	
-	string author; // автор
-	string name; // название
-	string publishing; // издательство
-	string year; // год издания
-	string section; // радел(спец. литература, хобби, хуеби)
-	string avail; // наличие
-	string valuation; // оценка
+	string mark; // марка авто						стр
+	string outMark; // оценка внешнего вида			инт
+	string inMark; // оценка внутреннего вида		инт
+	string defects; // дефекты						стр
+	string engine; // двигатель						стр
+	string power; // мощьность						инт
+	string year; // год								инт
+	string type; // Тип								стр
+	string name_auc; // Название аукциона продажи	стр
+	string date; // дата продажи					инт
+	string first_price; // начальная цена			инт
+	string end_price; // цена продажи				инт
+	string last_sold; // Проследняя продажа			инт
 	
-	getline(os, author, '/');
-	getline(os, name, '/');
-	getline(os, publishing, '/');
+	getline(os, mark, '/');
+	getline(os, outMark, '/');
+	getline(os, inMark, '/');
+	getline(os, defects, '/');
+	getline(os, engine, '/');
+	getline(os, power, '/');
 	getline(os, year, '/');
-	getline(os, section, '/');
-	getline(os, avail, '/');
-	getline(os, valuation, '\n');
+	getline(os, type, '/');
+	getline(os, name_auc, '/');
+	getline(os, date, '/');
+	getline(os, first_price, '/');
+	getline(os, end_price, '/');
+	getline(os, last_sold, '\n');
 	
-	a.setAuthor(author);
-	a.setName(name);
-	a.setPublishing(publishing);
-	a.setYear(year);
-	a.setSection(section);
-	a.setAvail(avail);
-	a.setValuation(valuation);
+	ato.setMark(mark);
+	ato.setOutMark(outMark);
+	ato.setInMark(inMark);
+	ato.setDefects(defects);
+	ato.setEngine(engine);
+	ato.setPower(power);
+	ato.setYear(year);
+	ato.setType(type);
+	ato.setName_auc(name_auc);
+	ato.setDate(date);
+	ato.setFirst_price(first_price);
+	ato.setEnd_price(end_price);
+	ato.setLast_sold(last_sold);
 	
-	return a;
-     */
+	return ato;
 }
 
 Shopper BDcommunity::parse_Shopper(string s) {
-    /*
-	Shopper rd;
-	
-	string fio;
-	string address;
-	string email;
-	string book_list; // список взятых книг
-	string time_take; // время взятия
-	string time_using; // срок пользования
-	string book_genre;
-	
+    Shopper shp;
+    
+    string passport; // серия и номер паспорта				// int
+    string balance; // баланс покупателя					// int
+    string list_of_car; // список автомобилей				// str
+    string time_buy; // время покупки						// str
+    string car; // покупаемая машина						// str
+    string prices;	// цена									// int
+    string data_of_buy; // дата покупки						// int
+    string discount; // скидон								// int
+    
 	int i = 0;
 	while(s[i] != '/'){
-		fio += s[i];
+        passport += s[i];
 	}
 	i++;
 	while(s[i] != '/'){
-		address += s[i];
+        balance += s[i];
 	}
 	i++;
 	while(s[i] != '/'){
-		email += s[i];
+        list_of_car += s[i];
 	}
 	i++;
 	while(s[i] != '/'){
-		book_list += s[i];
+        time_buy += s[i];
 	}
 	i++;
 	while(s[i] != '/'){
-		time_take += s[i];
+        car += s[i];
 	}
 	i++;
 	while(s[i] != '/'){
-		time_using += s[i];
+        prices += s[i];
 	}
 	i++;
-	while(s[i] != '\0'){
-		book_genre += s[i];
+	while(s[i] != '/'){
+        data_of_buy += s[i];
 	}
+    i++;
+    while(s[i] != '\0'){
+        discount += s[i];
+    }
+    
+    shp.setPassport(passport);
+    shp.setBalance(balance);
+    shp.setList_of_car(list_of_car);
+    shp.setTime_buy(time_buy);
+    shp.setCar(car);
+    shp.setPrices(prices);
+    shp.setData_of_buy(data_of_buy);
+    shp.setDiscount(discount);
 	
-	rd.setFio(fio);
-	rd.setAddress(address);
-	rd.setEmail(email);
-	rd.setBook_list(book_list);
-	rd.setTime_take(time_take);
-	rd.setTime_using(time_using);
-	rd.setBook_genre(book_genre);
-	
-	return rd;
-     */
+	return shp;
 }
 
-Auto BDcommunity::parse_Auto(string s) {/*
-	Auto a;
-	
-	string author; // автор
-	string name; // название
-	string publishing; // издательство
-	string year; // год издания
-	string section; // радел(спец. литература, хобби, хуеби)
-	string avail; // наличие
-	string valuation; // оценка
+Auto BDcommunity::parse_Auto(string s) {
+    Auto ato;
+    
+    string mark; // марка авто						стр
+    string outMark; // оценка внешнего вида			инт
+    string inMark; // оценка внутреннего вида		инт
+    string defects; // дефекты						стр
+    string engine; // двигатель						стр
+    string power; // мощьность						инт
+    string year; // год								инт
+    string type; // Тип								стр
+    string name_auc; // Название аукциона продажи	стр
+    string date; // дата продажи					инт
+    string first_price; // начальная цена			инт
+    string end_price; // цена продажи				инт
+    string last_sold; // Проследняя продажа			инт
 	
 	int i = 0;
 	while(s[i] != '/'){
-		author += s[i];
+        mark += s[i];
 	}
 	i++;
 	while(s[i] != '/'){
-		name += s[i];
+        outMark += s[i];
 	}
 	i++;
 	while(s[i] != '/'){
-		publishing += s[i];
+        inMark += s[i];
 	}
 	i++;
 	while(s[i] != '/'){
-		year += s[i];
+        defects += s[i];
 	}
 	i++;
 	while(s[i] != '/'){
-		section += s[i];
+        engine += s[i];
 	}
-	i++;
-	while(s[i] != '/'){
-		avail += s[i];
-	}
-	i++;
-	while(s[i] != '\0'){
-		valuation += s[i];
-	}
-	
-	a.setAuthor(author);
-	a.setName(name);
-	a.setPublishing(publishing);
-	a.setYear(year);
-	a.setSection(section);
-	a.setAvail(avail);
-	a.setValuation(valuation);
-	
-	return a;*/
+    i++;
+    while(s[i] != '/'){
+        power += s[i];
+    }
+    i++;
+    while(s[i] != '/'){
+        year += s[i];
+    }
+    i++;
+    while(s[i] != '/'){
+        type += s[i];
+    }
+    i++;
+    while(s[i] != '/'){
+        name_auc += s[i];
+    }
+    i++;
+    while(s[i] != '/'){
+        date += s[i];
+    }
+    i++;
+    while(s[i] != '/'){
+        first_price += s[i];
+    }
+    i++;
+    while(s[i] != '/'){
+        end_price += s[i];
+    }
+    i++;
+    while(s[i] != '\0'){
+        last_sold += s[i];
+    }
+    
+    ato.setMark(mark);
+    ato.setOutMark(outMark);
+    ato.setInMark(inMark);
+    ato.setDefects(defects);
+    ato.setEngine(engine);
+    ato.setPower(power);
+    ato.setYear(year);
+    ato.setType(type);
+    ato.setName_auc(name_auc);
+    ato.setDate(date);
+    ato.setFirst_price(first_price);
+    ato.setEnd_price(end_price);
+    ato.setLast_sold(last_sold);
+    
+    return ato;
 }
 
 void BDcommunity::report()
