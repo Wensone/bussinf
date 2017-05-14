@@ -1,8 +1,8 @@
 #ifndef BASEDATA_BDCOMMUNITY_H
 #define BASEDATA_BDCOMMUNITY_H
 
-#include "Auto.h"
-#include "Shopper.h"
+#include "sick.h"
+#include "medic.h"
 #include <getopt.h>
 #include "DataBase.h"
 #include <cstdio>
@@ -18,8 +18,8 @@
 
 class BDcommunity {
 private:
-    DB::DataBase<Shopper> *s;
-    DB::DataBase<Auto> *a;
+    DB::DataBase<medic> *m;
+    DB::DataBase<sick> *s;
     int base;
     enum Type_base {
         r = 1, c = 2
@@ -29,14 +29,13 @@ public:
 
     ~BDcommunity();
 
-    void print_Auto();
+    void prtin_sick();
 
-    void print_Shopper();
+    void print_medic();
 
-    Shopper in_Shopper();
+    medic in_Medic();
 
-
-    Auto in_Auto();
+    sick in_Sick();
 
     int getBaseNow();
 
@@ -52,31 +51,31 @@ public:
 
     void switch_output(string newfilename);
 
-    void add_new_record(Shopper rec);
+    void add_new_record(medic rec);
 
-    void add_new_record(Auto rec);
+    void add_new_record(sick rec);
 
     void sort(int n);
 
-    bool find(Shopper s);
+    bool find(medic s);
 
-    bool find(Auto s);
+    bool find(sick s);
 
-    bool del_record(Shopper &t);
+    bool del_record(medic &t);
 
-    bool del_record(Auto &t);
+    bool del_record(sick &t);
 
-    void del_copy(Shopper &T);
+    void del_copy(medic &T);
 
-    void del_copy(Auto &T);
+    void del_copy(sick &T);
 
     int write();
 
     int load();
 
-    void print_onec(Shopper &t);
+    void print_onec(medic &t);
 
-    void print_onec(Auto &t);
+    void print_onec(sick &t);
 
     void del_base();
 
@@ -84,19 +83,19 @@ public:
 
     void menu();
 
-    void del_copyOne(Shopper &T);
+    void del_copyOne(medic &T);
 
-    void del_copyOne(Auto &T);
+    void del_copyOne(sick &T);
 
     void console(int argc, char **argv);
 
-    Shopper parse_Shopper(ifstream &os);
+    medic parse_Medic(ifstream &os);
 
-    Auto parse_Auto(ifstream &os);
+    sick parse_Sick(ifstream &os);
 
-    Shopper parse_Shopper(string s);
+    medic parse_Medic(string s);
 
-    Auto parse_Auto(string s);
+    sick parse_Sick(string s);
 
     void readInstruction(char *file);
 
