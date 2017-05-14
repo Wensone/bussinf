@@ -57,9 +57,9 @@ public:
 
     void sort(int n);
 
-    bool find(medic s);
+    bool find(medic &s);
 
-    bool find(sick s);
+    bool find(sick &s);
 
     bool del_record(medic &t);
 

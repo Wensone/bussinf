@@ -47,6 +47,8 @@ public:
 
     static bool setNumber(int pole);
 
+    const string &getMedics() const;
+
 };
 
 #endif

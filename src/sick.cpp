@@ -25,7 +25,7 @@ string i2s(int value) {
 
 void sick::Generate(list <sick> &lst)
 {
-    srand((unsigned)time(0));
+    /*srand((unsigned)time(0));
     sick autist;
 
     ifstream mfin("../Genavto/name");
@@ -114,7 +114,7 @@ void sick::Generate(list <sick> &lst)
         lst.push_back(autist);
         fout << autist << endl;
         i++;
-    }
+    }*/
 
 }
 
@@ -172,6 +172,11 @@ bool sick::operator<(const sick &rhs) const
     if (number == 2) return symptoms < rhs.symptoms;
     if (number == 3) return procedure < rhs.procedure;
     return medics < rhs.medics;
+}
+
+const string &sick::getMedics() const
+{
+    return medics;
 }
 
 

@@ -6,16 +6,7 @@ void BDcommunity::prtin_sick()
     cout << "1. name" << endl
          << "2. symptoms " << endl
          << "3. procedure" << endl
-         << "4. medics" << endl
-         << "5. engine" << endl
-         << "6. power" << endl
-         << "7. year" << endl
-         << "8. type" << endl
-         << "9. name_auc" << endl
-         << "10. date" << endl
-         << "11. first_price" << endl
-         << "12. end_price" << endl
-         << "13. last_sold" << endl;
+         << "4. medics" << endl;
 }
 
 void BDcommunity::print_medic()
@@ -25,103 +16,63 @@ void BDcommunity::print_medic()
          << "2. amt " << endl
          << "3. permutability" << endl
          << "4. shelf_life" << endl
-         << "5. car" << endl
-         << "6. prices" << endl
-         << "7. data_of_buy" << endl
-         << "8. discount" << endl;
+         << "5. prices" << endl;
 }
 
 medic BDcommunity::in_Medic()
 {
     string new_pole;
-    medic shop;
-    {
-
-        cout << "Passport : ";
-        cin.ignore();
-        getline(cin, new_pole);
-        shop.setPassport(new_pole);
-        cout << "Balance : ";
-
-        getline(cin, new_pole);
-        shop.setBalance(new_pole);
-        cout << "List of cars : ";
-        getline(cin, new_pole);
-        shop.setCar(new_pole);
-        cout << "Time buy : ";
-
-        getline(cin, new_pole);
-        shop.setTime_buy(new_pole);
-        cout << "Cars : ";
-
-        getline(cin, new_pole);
-        shop.setCar(new_pole);
-        cout << "Prices : ";
-        getline(cin, new_pole);
-        shop.setPrices(new_pole);
-        cout << "Date of buy : ";
-        getline(cin, new_pole);
-        shop.setData_of_buy(new_pole);
-
-        cout << "Discount : ";
-        getline(cin, new_pole);
-        shop.setDiscount(new_pole);
-        cin.clear();
-        //m->add_rec(shop);
-    }
-    return shop;
-}
-
-sick BDcommunity::in_Sick()
-{
-    string new_pole;
-    sick _auto;
+    medic m;
     {
 
         cout << "name : ";
         cin.ignore();
         getline(cin, new_pole);
-        _auto.setMark(new_pole);
+        m.setName(new_pole);
+        cout << "Amt : ";
+
+        getline(cin, new_pole);
+        m.setAmt(new_pole);
+        cout << "Permutablity : ";
+        getline(cin, new_pole);
+        m.setPermutability(new_pole);
+        cout << "Price: ";
+
+        getline(cin, new_pole);
+        m.setPrices(new_pole);
+        cout << "Shelf life: ";
+
+        getline(cin, new_pole);
+        m.setShelf_life(new_pole);
+        cout << "Solded: ";
+        getline(cin, new_pole);
+        m.setSold(new_pole);
+    }
+    return m;
+}
+
+sick BDcommunity::in_Sick()
+{
+    string new_pole;
+    sick s;
+    {
+
+        cout << "name : ";
+        cin.ignore();
+        getline(cin, new_pole);
+        s.setName(new_pole);
         cout << "symptoms : ";
         getline(cin, new_pole);
-        _auto.setOutMark(new_pole);
+        s.setSymptoms(new_pole);
         cout << "procedure : ";
         getline(cin, new_pole);
-        _auto.setInMark(new_pole);
+        s.setProcedure(new_pole);
         cout << "medics : ";
         getline(cin, new_pole);
-        _auto.setDefects(new_pole);
-        cout << "engine : ";
-        getline(cin, new_pole);
-        _auto.setEngine(new_pole);
-        cout << "power : ";
-        getline(cin, new_pole);
-        _auto.setPower(new_pole);
-        cout << "Year : ";
-        getline(cin, new_pole);
-        _auto.setYear(new_pole);
-        cout << "type : ";
-        getline(cin, new_pole);
-        _auto.setType(new_pole);
-        cout << "name_auc : ";
-        getline(cin, new_pole);
-        _auto.setName_auc(new_pole);
-        cout << "date : ";
-        getline(cin, new_pole);
-        _auto.setDate(new_pole);
-        cout << "first_price : ";
-        getline(cin, new_pole);
-        _auto.setFirst_price(new_pole);
-        cout << "end_price : ";
-        getline(cin, new_pole);
-        _auto.setEnd_price(new_pole);
-        cout << "last sold : ";
-        getline(cin, new_pole);
-        _auto.setLast_sold(new_pole);
+        s.setMedics(new_pole);
         cin.clear();
-        //s->add_rec(_auto);
     }
-    return _auto;
+    return s;
 }
 
 int BDcommunity::getBaseNow()
@@ -157,7 +108,8 @@ void BDcommunity::menu()
              << "12. Clear screen" << endl
              << "13. Delete all records by template" << endl
              << "14. Print all records by template" << endl
-             << "15. Report" << endl;
+             << "15. Report" << endl
+             << "16. Heal" << endl;
 
         int key;
         cout << "Enter menu point: ";
@@ -271,6 +223,13 @@ void BDcommunity::menu()
                 this->report();
                 break;
             }
+            case 16 : {
+                string name_bolezn;
+                cout << "Enter name of sick" << endl;
+                cin >> name_bolezn;
+                this->heal(name_bolezn);
+                break;
+            }
             default:
                 return;
         }
@@ -295,7 +254,7 @@ void BDcommunity::checkIO(bool &in, bool &out)
     }
 }
 
-bool BDcommunity::find(sick s)
+bool BDcommunity::find(sick &s)
 {
     return this->s->find(s);
 }
@@ -324,7 +283,7 @@ void BDcommunity::printBase()
     }
 }
 
-bool BDcommunity::find(medic s)
+bool BDcommunity::find(medic &s)
 {
     return this->m->find(s);
 }
@@ -437,7 +396,6 @@ bool BDcommunity::del_record(sick &t)
     return s->del_rec(t);
 }
 
-
 void BDcommunity::clear_screen()
 {
     system(clr);
@@ -447,7 +405,7 @@ void BDcommunity::console(int argc, char **argv)
 {
     opterr = 0;
     int choose = 0;
-	ifstream f;
+    ifstream f;
     while ((choose = getopt(argc, argv, "f:hb:i:o:c:s:d:p:m:lw"))) {
         switch (choose) {
             case 'f' : {
@@ -465,9 +423,9 @@ void BDcommunity::console(int argc, char **argv)
             case 'a' : {
                 if (base == 1) {
                     medic t;
-					
-					t = parse_Medic(optarg);
-					add_new_record(t);
+
+                    t = parse_Medic(optarg);
+                    add_new_record(t);
 
                 } else {
                     sick t;
@@ -480,11 +438,11 @@ void BDcommunity::console(int argc, char **argv)
             case 'd' : {
                 if (base == 1) {
                     medic t;
-					t = parse_Medic(optarg);
+                    t = parse_Medic(optarg);
                     del_copy(t);
                 } else {
                     sick t;
-					t = parse_Sick(optarg);
+                    t = parse_Sick(optarg);
                     del_copy(t);
                 }
                 break;
@@ -492,11 +450,11 @@ void BDcommunity::console(int argc, char **argv)
             case 'p' : {
                 if (base == 1) {
                     medic t;
-					t = parse_Medic(optarg);
+                    t = parse_Medic(optarg);
                     print_onec(t);
                 } else {
                     sick t;
-					t = parse_Sick(optarg);
+                    t = parse_Sick(optarg);
                     print_onec(t);
                 }
                 break;
@@ -537,7 +495,7 @@ void BDcommunity::console(int argc, char **argv)
                         break;
                     }
                     default: {
-                        cout << "Incorrect (" << optarg << ")"  << endl;
+                        cout << "Incorrect (" << optarg << ")" << endl;
                     }
                 }
 
@@ -549,7 +507,7 @@ void BDcommunity::console(int argc, char **argv)
                 cout << "Template sick : FIO /..." << endl;
                 cout << "-f filename for read by file" << endl;
                 cout << "-b 1/2 choose base(medic/sick)" << endl;
-                cout << "-i file/t -o file - choose input and output files"  << endl;
+                cout << "-i file/t -o file - choose input and output files" << endl;
                 cout << "-s templates - add new record" << endl;
                 cout << "-p templates - print all records by templates" << endl;
                 cout << "-m number_of_sort(1-7)" << endl;
@@ -601,21 +559,21 @@ void BDcommunity::readInstruction(char *file)
         } else if (command == "addRecord") {
             if (base == 1) {
                 medic t;
-				t = parse_Medic(instructioin);
+                t = parse_Medic(instructioin);
                 add_new_record(t);
             } else {
                 sick t;
-				t = parse_Sick(instructioin);
+                t = parse_Sick(instructioin);
                 add_new_record(t);
             }
         } else if (command == "deleteRecord") {
             if (base == 1) {
                 medic t;
-				t = parse_Medic(instructioin);
+                t = parse_Medic(instructioin);
                 del_copy(t);
             } else {
                 sick t;
-				t = parse_Sick(instructioin);
+                t = parse_Sick(instructioin);
                 del_copy(t);
             }
         } else if (command == "delBase") {
@@ -633,11 +591,11 @@ void BDcommunity::readInstruction(char *file)
         } else if (command == "Print") {
             if (base == 1) {
                 medic t;
-				t = parse_Medic(instructioin);
+                t = parse_Medic(instructioin);
                 print_onec(t);
             } else {
                 sick t;
-				t = parse_Sick(instructioin);
+                t = parse_Sick(instructioin);
                 print_onec(t);
             }
         } else if (command == "report") {
@@ -645,10 +603,11 @@ void BDcommunity::readInstruction(char *file)
         }
     }
     instructioin.close();
-	
+
 }
 
-medic BDcommunity::parse_Medic(ifstream &os) {
+medic BDcommunity::parse_Medic(ifstream &os)
+{
     /*
 	medic rd;
 
@@ -680,7 +639,8 @@ medic BDcommunity::parse_Medic(ifstream &os) {
      */
 }
 
-sick BDcommunity::parse_Sick(ifstream &os) {
+sick BDcommunity::parse_Sick(ifstream &os)
+{
     /*
 	sick s;
 	
@@ -712,7 +672,8 @@ sick BDcommunity::parse_Sick(ifstream &os) {
      */
 }
 
-medic BDcommunity::parse_Medic(string s) {
+medic BDcommunity::parse_Medic(string s)
+{
     /*
 	medic rd;
 	
@@ -765,7 +726,8 @@ medic BDcommunity::parse_Medic(string s) {
      */
 }
 
-sick BDcommunity::parse_Sick(string s) {/*
+sick BDcommunity::parse_Sick(string s)
+{/*
 	sick s;
 	
 	string author; // автор
@@ -822,11 +784,11 @@ void BDcommunity::report()
     int aamnt = 0;
     int aprice = 0;
     int pribil = 0;
-    for(auto p = m->begin(); p != m->end(); ++p) {
-        asold += atoi(p->getSold());
-        aamnt += atoi(p->getAmnt());
-        aprice += atoi(p->getPrices());
-        pribil += (atoi(p->getSold()) * atoi(p->getPrices()));
+    for (auto p = m->begin(); p != m->end(); ++p) {
+        asold += atoi(p->getSold().c_str());
+        aamnt += atoi(p->getAmt().c_str());
+        aprice += atoi(p->getPrices().c_str());
+        pribil += (atoi(p->getSold().c_str()) * atoi(p->getPrices().c_str()));
     }
     asold /= m->getSize();
     aamnt /= m->getSize();
@@ -841,10 +803,42 @@ void BDcommunity::heal(string bolezn)
 {
     sick z;
     z.setName(bolezn);
-    if (find(z)) {
-        cout << z;
-
+    if (!find(z)) {
+        cout << "Not founded sick" << endl;
+        return;
     } else {
-        cout << "Not founded";
+        cout << z << endl;
+    }
+    string medicaments = z.getMedics();
+
+    while (medicaments.size() > 0) {
+        medic medic1;
+        unsigned long ss = medicaments.find(' ');
+        if (ss == string::npos) break;
+        string name = medicaments.substr(0, ss);
+        ss = medicaments.find(", ");
+        if (ss != string::npos) {
+            medicaments.erase(0, ss + 2);
+        } else {
+            medicaments.clear();
+        }
+        medic1.setName(name);
+        if (find(medic1)) {
+            cout << name << endl;
+            if (atoi(medic1.getAmt().c_str()) > 0) {
+                cout << "You can take it" << endl;
+                for (auto p = m->begin(); p != m->end(); ++p) {
+                    if (medic1 == *p) {
+                        p->setSold(to_string(atoi(p->getSold().c_str()) + 1));
+                        p->setAmt(to_string(atoi(p->getAmt().c_str()) - 1));
+                        break;
+                    }
+                }
+            } else {
+                cout << "Not enought" << endl;
+            }
+        } else {
+            cout << "Not founded " << name << endl;
+        }
     }
 }
