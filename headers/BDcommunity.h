@@ -100,6 +100,8 @@ public:
     void readInstruction(char *file);
 
     void report();
+
+    void heal(string bolezn);
 };
 
 #endif //BASEDATA_BDCOMMUNITY_H

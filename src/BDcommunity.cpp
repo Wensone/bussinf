@@ -818,5 +818,33 @@ sick BDcommunity::parse_Sick(string s) {/*
 
 void BDcommunity::report()
 {
+    int asold = 0;
+    int aamnt = 0;
+    int aprice = 0;
+    int pribil = 0;
+    for(auto p = m->begin(); p != m->end(); ++p) {
+        asold += atoi(p->getSold());
+        aamnt += atoi(p->getAmnt());
+        aprice += atoi(p->getPrices());
+        pribil += (atoi(p->getSold()) * atoi(p->getPrices()));
+    }
+    asold /= m->getSize();
+    aamnt /= m->getSize();
+    aprice /= m->getSize();
+    cout << "Average solded " << asold << endl;
+    cout << "Average amnt " << aamnt << endl;
+    cout << "Average price " << aprice << endl;
+    cout << "Pribil " << pribil << endl;
+}
 
+void BDcommunity::heal(string bolezn)
+{
+    sick z;
+    z.setName(bolezn);
+    if (find(z)) {
+        cout << z;
+
+    } else {
+        cout << "Not founded";
+    }
 }

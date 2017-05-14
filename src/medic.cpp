@@ -268,3 +268,18 @@ void medic::setSold(const string &sold)
     medic::sold = sold;
 }
 
+const string &medic::getSold() const
+{
+    return sold;
+}
+
+const string &medic::getAmt() const
+{
+    return amt;
+}
+
+const string &medic::getPrices() const
+{
+    return prices;
+}
+

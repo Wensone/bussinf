@@ -35,31 +35,13 @@ public:
 
     sick();
 
-    void setMark(const string &mark);
+    void setName(const string &name);
 
-    void setOutMark(const string &outMark);
+    void setSymptoms(const string &symptoms);
 
-    void setInMark(const string &inMark);
+    void setProcedure(const string &procedure);
 
-    void setDefects(const string &defects);
-
-    void setEngine(const string &engine);
-
-    void setPower(const string &power);
-
-    void setYear(const string &year);
-
-    void setType(const string &type);
-
-    void setName_auc(const string &name_auc);
-
-    void setDate(const string &date);
-
-    void setFirst_price(const string &first_price);
-
-    void setEnd_price(const string &end_price);
-
-    void setLast_sold(const string &last_sold);
+    void setMedics(const string &medics);
 
     static int getNumber();
 

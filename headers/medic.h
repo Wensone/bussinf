@@ -24,6 +24,10 @@ public:
 
     medic();
 
+    const string &getPrices() const;
+
+    const string &getAmt() const;
+
     static int getNumber();
 
     static bool setNumber(int number);
@@ -37,6 +41,8 @@ public:
     friend ostream &operator<<(ostream &os, medic &rd);
 
     void read(istream &in);
+
+    const string &getSold() const;
 
     string i2s(long long value);
 

@@ -171,64 +171,9 @@ bool sick::operator<(const sick &rhs) const
     if (number == 1) return name < rhs.name;
     if (number == 2) return symptoms < rhs.symptoms;
     if (number == 3) return procedure < rhs.procedure;
-    if (number == 4) return medics < rhs.medics;
+    return medics < rhs.medics;
 }
 
-void sick::setMark(const string &mark)
-{
-    sick::name = mark;
-}
-
-void sick::setOutMark(const string &outMark)
-{
-    sick::symptoms = outMark;
-}
-
-void sick::setInMark(const string &inMark)
-{
-    sick::procedure = inMark;
-}
-
-void sick::setDefects(const string &defects)
-{
-    sick::medics = defects;
-}
-
-void sick::setEngine(const string &engine)
-{
-}
-
-void sick::setPower(const string &power)
-{
-}
-
-void sick::setYear(const string &year)
-{
-}
-
-void sick::setType(const string &type)
-{
-}
-
-void sick::setName_auc(const string &name_auc)
-{
-}
-
-void sick::setDate(const string &date)
-{
-}
-
-void sick::setFirst_price(const string &first_price)
-{
-}
-
-void sick::setEnd_price(const string &end_price)
-{
-}
-
-void sick::setLast_sold(const string &last_sold)
-{
-}
 
 bool sick::operator==(const sick &rhs) const
 {
@@ -241,4 +186,24 @@ bool sick::operator==(const sick &rhs) const
 bool sick::operator!=(const sick &rhs) const
 {
     return !(rhs == *this);
+}
+
+void sick::setName(const string &name)
+{
+    sick::name = name;
+}
+
+void sick::setSymptoms(const string &symptoms)
+{
+    sick::symptoms = symptoms;
+}
+
+void sick::setProcedure(const string &procedure)
+{
+    sick::procedure = procedure;
+}
+
+void sick::setMedics(const string &medics)
+{
+    sick::medics = medics;
 }
