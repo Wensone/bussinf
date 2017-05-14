@@ -169,41 +169,6 @@ bool medic::cmp(medic &b)
 
 void medic::read(istream &fin)
 {
-    string temp_str;
-
-    getline(fin, temp_str);
-
-
-    unsigned long i = temp_str.find("/");
-    this->name = temp_str.substr(0, i - 1);
-    temp_str.erase(0, i + 2);
-
-    i = temp_str.find("/");
-    this->amt = temp_str.substr(0, i - 1);
-    temp_str.erase(0, i + 2);
-
-    i = temp_str.find("/");
-    this->permutability = temp_str.substr(0, i - 1);
-    temp_str.erase(0, i + 2);
-
-    i = temp_str.find("/");
-    this->shelf_life = temp_str.substr(0, i - 1);
-    temp_str.erase(0, i + 2);
-
-    i = temp_str.find("/");
-    temp_str.substr(0, i - 1);
-    temp_str.erase(0, i + 2);
-
-    i = temp_str.find("/");
-    this->prices = temp_str.substr(0, i - 1);
-    temp_str.erase(0, i + 2);
-
-    i = temp_str.find("/");
-    temp_str.substr(0, i - 1);
-    temp_str.erase(0, i + 2);
-
-    i = temp_str.find("/");
-    temp_str.substr(0, i - 1);
 }
 
 int medic::getNumber()
