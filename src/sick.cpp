@@ -25,97 +25,69 @@ string i2s(int value) {
 
 void sick::Generate(list <sick> &lst)
 {
-    /*srand((unsigned)time(0));
-    sick autist;
+    srand((unsigned)time(0));
+    sick sk;/*
+    string name; // автор
+    string symptoms; // название
+    string procedure; // издательство
+    string medics; // год издания {name 2табл в день | name2 раз в день}*/
+    ifstream nfin("../Gensick/name");
+    ifstream sfin("../Gensick/symp");
+    ifstream pfin("../Gensick/proc");
+    ifstream mfin("../Gensick/med");
+    ofstream fout("../Gensick/gen_sick");
 
-    ifstream mfin("../Genavto/name");
-    ifstream dfin("../Genavto/medics");
-    ifstream efin("../Genavto/engine");
-    ifstream tfin("../Genavto/type");
-    ifstream afin("../Genavto/auc");
-    ofstream fout("../Genavto/gen_data");
+    int name;
+    int symp;
+    int proc;
+    int med;
 
-    int mark;
-    int defects;
-    int engine;
-    int type;
-    int auc;
+    nfin >> name;
+    sfin >> symp;
+    pfin >> proc;
+    mfin >> med;
 
-    mfin >> mark;
-    dfin >> defects;
-    efin >> engine;
-    tfin >> type;
-    afin >> auc;
-
-    string a[mark],
-            b[defects],
-            c[engine],
-            d[type],
-            f[auc];
+    string a[name],
+            b[symp],
+            c[proc],
+            d[med];
     int i;
     i = 0;
-    while (i < mark) {
+    while (i < name) {
+        if (nfin.eof()) break;
+
+        getline(nfin, a[i]);
+
+        i++;
+    }
+    i = 0;
+    while (i < symp) {
+        if (sfin.eof()) break;
+
+        getline(sfin, b[i]);
+        i++;
+    }
+    i = 0;
+    while (i < proc) {
+        if (pfin.eof()) break;
+
+        getline(pfin, c[i]);
+        i++;
+    }
+    i = 0;
+    while (i < med) {
         if (mfin.eof()) break;
 
-        getline(mfin, a[i]);
-
+        getline(mfin, d[i]);
         i++;
     }
-    i = 0;
-    while (i < defects) {
-        if (dfin.eof()) break;
-
-        getline(dfin, b[i]);
-        i++;
-    }
-    i = 0;
-    while (i < engine) {
-        if (efin.eof()) break;
-
-        getline(efin, c[i]);
-        i++;
-    }
-    i = 0;
-    while (i < type) {
-        if (tfin.eof()) break;
-
-        getline(tfin, d[i]);
-        i++;
-    }
-    i = 0;
-    while (i < auc) {
-        if (afin.eof()) break;
-
-        getline(afin, f[i]);
-        i++;
-    }
-
     i = 0;
     while (i < 60) {
-        autist.name = a[1 + rand() % (mark - 1)];
-        autist.symptoms = i2s(1 + rand() % (10 - 1));
-        autist.procedure = i2s(1 + rand() % 10 - 1);
-        autist.medics = b[1 + rand() % (defects - 1)];
-        c[1 + rand() % (engine - 1)];
-        i2s(1 + rand() % 1500 - 1);
-        i2s(1900 + rand() % 2017 - 1);
-        d[1 + rand() % (type - 1)];
-        f[1 + rand() % (auc - 1)];
-        int day = 1 + rand() % 29;
-        int month = 1 + rand() % 11;
-        int year = 1900 + rand() % 2017;
-        i2s(day);
-        autist.date += i2s(month);
-        autist.date += i2s(year);
-        i2s(1 + rand() % 20000 - 1);
-        i2s(1 + rand() % 30000 - 1);
-        i2s(1 + rand() % 10 - 1);
 
-        lst.push_back(autist);
-        fout << autist << endl;
+        lst.push_back(sk);
+        fout << sk << endl;
         i++;
-    }*/
-
+    }
 }
 
 ostream &operator<<(ostream &os, const sick &o)
