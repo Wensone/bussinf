@@ -1,9 +1,8 @@
-cmake_minimum_required(VERSION 3.5)
-project(Base)
+cmake_minimum_required(VERSION 3.5.1)
+project(BaseData)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(SOURCE_FILES src/Auto.cpp src/BDcommunity.cpp src/DataIO.cpp src/main.cpp
-        src/Shopper.cpp headers/Auto.h headers/BDcommunity.h headers/DataBase.h
-        headers/DataIO.h headers/Shopper.h)
-add_executable(Base ${SOURCE_FILES})
+set(SOURCE_FILES src/main.cpp src/Reader.cpp src/Cartoteka.cpp src/DataIO.cpp src/DataBase.cpp src/BDcommunity.cpp)
+set(HEADERS headers/Cartoteka.h headers/DataBase.h headers/DataIO.h headers/Reader.h src/DataIO.cpp src/DataBase.cpp headers/BDcommunity.h src/BDcommunity.cpp)
+add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${HEADERS})

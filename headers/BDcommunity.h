@@ -1,8 +1,8 @@
 #ifndef BASEDATA_BDCOMMUNITY_H
 #define BASEDATA_BDCOMMUNITY_H
 
-#include "Auto.h"
-#include "Shopper.h"
+#include "Cartoteka.h"
+#include "Reader.h"
 #include <getopt.h>
 #include "DataBase.h"
 #include <cstdio>
@@ -18,8 +18,8 @@
 
 class BDcommunity {
 private:
-    DB::DataBase<Shopper> *s;
-    DB::DataBase<Auto> *a;
+    DB::DataBase<Reader> *reader;
+    DB::DataBase<Cartoteka> *card;
     int base;
     enum Type_base {
         r = 1, c = 2
@@ -29,13 +29,13 @@ public:
 
     ~BDcommunity();
 
-    void print_Auto();
+    void print_Cartoteka();
 
-    void print_Shopper();
+    void print_Reader();
 
-    Shopper in_Shopper();
+    Reader enter_Reader();
 
-    Auto in_Auto();
+    Cartoteka enter_Cartoteka();
 
     int getBaseNow();
 
@@ -51,31 +51,31 @@ public:
 
     void switch_output(string newfilename);
 
-    void add_new_record(Shopper rec);
+    void add_new_record(Reader rec);
 
-    void add_new_record(Auto rec);
+    void add_new_record(Cartoteka rec);
 
     void sort(int n);
 
-    bool find(Shopper s);
+    bool find(Reader s);
 
-    bool find(Auto s);
+    bool find(Cartoteka s);
 
-    bool del_record(Shopper &t);
+    bool del_record(Reader &t);
 
-    bool del_record(Auto &t);
+    bool del_record(Cartoteka &t);
 
-    void del_copy(Shopper &T);
+    void del_copy(Reader &T);
 
-    void del_copy(Auto &T);
+    void del_copy(Cartoteka &T);
 
     int write();
 
     int load();
 
-    void print_onec(Shopper &t);
+    void print_onec(Reader &t);
 
-    void print_onec(Auto &t);
+    void print_onec(Cartoteka &t);
 
     void del_base();
 
@@ -83,23 +83,23 @@ public:
 
     void menu();
 
-    void del_copyOne(Shopper &T);
+    void del_copyOne(Reader &T);
 
-    void del_copyOne(Auto &T);
+    void del_copyOne(Cartoteka &T);
 
     void console(int argc, char **argv);
 
-    Shopper parse_Shopper(ifstream &os);
+    Reader parse_reader(ifstream &os);
 
-    Auto parse_Auto(ifstream &os);
+    Cartoteka parse_card(ifstream &os);
 
-    Shopper parse_Shopper(string s);
+    Reader parse_reader(string s);
 
-    Auto parse_Auto(string s);
+    Cartoteka parse_card(string s);
 
     void readInstruction(char *file);
 
-    //report
+    void report();
 };
 
 #endif //BASEDATA_BDCOMMUNITY_H

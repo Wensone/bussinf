@@ -5,7 +5,7 @@
 #include <iostream>
 #include <algorithm>
 #include "DataIO.h"
-#include "Shopper.h"
+#include "Reader.h"
 
 using namespace std;
 
@@ -29,7 +29,7 @@ namespace DB {
         {
             if (!valid_write()) return;
 
-            for (auto p : l) { // for (list<T>::iterator p = l.begin(); p != l.end(); ++p)
+            for (auto p : l) {
                 fout << p << endl;
             }
 
@@ -56,7 +56,7 @@ namespace DB {
         bool find(T &templ)
         {
             for (auto p : l) {
-                if (templ.cmp(p)) {
+                if (templ.compare_my_class_na_easy_brat_function(p)) {
                     templ = p;
                     return true;
                 }
@@ -68,7 +68,7 @@ namespace DB {
         void printC(T &t)
         {
             for (auto p : l) {
-                if (t.cmp(p)) {
+                if (t.compare_my_class_na_easy_brat_function(p)) {
                     cout << p;
                 }
             }
@@ -130,6 +130,16 @@ namespace DB {
         void del_oneC(T &t)
         {
             while (del_rec(t)) {}
+        }
+
+        auto begin()
+        {
+            return l.begin();
+        }
+
+        auto end()
+        {
+            return l.end();
         }
     };
 }
