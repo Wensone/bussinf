@@ -49,77 +49,100 @@ void medic::Generate(list <medic> &lst)
     srand((unsigned) time(0));
     medic shopper;
 
-    ifstream lfin("../Genpers/permutability");
-    ifstream tfin("../Genpers/shelf_life");
-    ifstream cfin("../Genpers/car");
-
-    //ФИО, адрес, e-mail, список взятых книг
-    //времени взятия книги
-    //срока пользования книгой
-    //предпочитаемые жанры.
-
+    ifstream nfin("../Genpers/name");
+    ifstream afin("../Genpers/amt");
+    ifstream pfin("../Genpers/perm");
+    ifstream sfin("../Genpers/shelf");
+    ifstream rfin("../Genpers/prices");
+    ifstream lfin("../Genpers/sold");
+	
+	ofstream fout("medic");
+	
     /*
-        string name; // серия и номер паспорта				// int
-        string amt; // баланс покупателя					// int
-        string permutability; // список автомобилей				// str
-        string shelf_life; // время покупки						// str
-        string car; // покупаемая машина						// str
-        string prices;	// цена									// int
-        string data_of_buy; // дата покупки						// int
-        string discount; // скидон								// int
+        string name; // название				// int
+        string amt; // количество // int
+        string permutability; // взаимозаменяемость				// str
+        string shelf_life; // срок годности						// str
+        string prices;    // цена
+        string sold;
     */
+	
+	int name;
+	int amt;
+	int permutability;
+	int shelf_life;
+	int prices;
+	int sold;
+	
+	nfin >> name;;
+	afin >> amt;;
+	pfin >> permutability;;
+	sfin >> shelf_life;;
+	rfin >> prices;;
+	lfin >> sold;;
 
-    ofstream fout("shopper");
-
-    int list_of_car;
-    int time_buy;
-    int car;
-
-    lfin >> list_of_car;
-    tfin >> time_buy;
-    cfin >> car;
-
-    string a[list_of_car],
-            b[time_buy],
-            c[car];
+    string a[name],
+            b[amt],
+            c[permutability],
+			d[shelf_life],
+			f[prices],
+			g[sold];
 
     int i;
     i = 0;
-    while (i < list_of_car) {
-        if (lfin.eof()) break;
+    while (i < name) {
+        if (nfin.eof()) break;
 
-        getline(lfin, a[i]);
+        getline(nfin, a[i]);
 
         i++;
     }
     i = 0;
-    while (i < time_buy) {
-        if (tfin.eof()) break;
+    while (i < amt) {
+        if (afin.eof()) break;
 
-        getline(tfin, b[i]);
+        getline(afin, b[i]);
         i++;
     }
 
     i = 0;
-    while (i < car) {
-        if (cfin.eof()) break;
+    while (i < permutability) {
+        if (pfin.eof()) break;
 
-        getline(cfin, c[i]);
+        getline(pfin, c[i]);
         i++;
     }
-
+	i = 0;
+	while (i < shelf_life) {
+		if (sfin.eof()) break;
+		
+		getline(sfin, d[i]);
+		i++;
+	}
+	i = 0;
+	while (i < prices) {
+		if (rfin.eof()) break;
+		
+		getline(rfin, f[i]);
+		i++;
+	}
+	i = 0;
+	while (i < sold) {
+		if (lfin.eof()) break;
+		
+		getline(lfin, g[i]);
+		i++;
+	}
+	
     i = 0;
     while (i < 60) {
-        shopper.name = i2s(5000 + rand() % 1000);
-        shopper.name += i2s(111111 + rand() % 888888);
-        shopper.amt = i2s(100000 + rand() % 10000000);
-        shopper.permutability = a[1 + rand() % list_of_car - 1];
-        shopper.shelf_life = b[1 + rand() % time_buy - 1];
-        c[1 + rand() % car - 1];
-        shopper.prices = i2s(80000 + rand() % 10000000);
-        i2s(1 + rand() % (8 * 365 + (366 + 366)));
-        i2s(20000 + rand() % 300000);
-
+		shopper.name = a[1+rand() % name];
+		shopper.amt = b[1+rand() % amt];
+		shopper.permutability = c[1+rand() % permutability];
+		shopper.shelf_life = d[1+rand() % shelf_life];
+		shopper.prices = f[1+rand() % prices];
+		shopper.sold = g[1+rand() % sold];
+		
         lst.push_back(shopper);
         fout << shopper << endl;
         i++;

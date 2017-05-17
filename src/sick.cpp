@@ -26,11 +26,13 @@ string i2s(int value) {
 void sick::Generate(list <sick> &lst)
 {
     srand((unsigned)time(0));
-    sick sk;/*
-    string name; // автор
-    string symptoms; // название
-    string procedure; // издательство
-    string medics; // год издания {name 2табл в день | name2 раз в день}*/
+    sick sk;
+    /*
+        string name; //
+        string symptoms; //
+        string procedure; //
+        string medics; //
+    */
     ifstream nfin("../Gensick/name");
     ifstream sfin("../Gensick/symp");
     ifstream pfin("../Gensick/proc");
@@ -83,7 +85,11 @@ void sick::Generate(list <sick> &lst)
     }
     i = 0;
     while (i < 60) {
-
+        sk.name = a[1+rand() % name];
+		sk.symptoms = b[1+rand() % symp];
+		sk.procedure = c[1+rand() % proc];
+		sk.medics = d[1+rand() % med];
+		
         lst.push_back(sk);
         fout << sk << endl;
         i++;
